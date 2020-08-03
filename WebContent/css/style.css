@@ -31,6 +31,8 @@
 #joinForm input:focus{border:1px solid #9c836a;}
 #joinForm hr{border:1px solid #eee; margin:40px 0;}
 
+.gendertype{width:18px !important;}
+
 /* boardList.jsp */
 #notice {margin-bottom:40px; position:relative;}
 .lineR{position:relative; display:block;}
@@ -51,3 +53,23 @@
 .userCheckBox input:focus{border:1px solid #9c836a;}
 .userCheckBox button{width:100%; height:56px; margin-top:10px; padding:0 32px; font-size:18px; color:#9c836a; border:1px solid #9c836a; transition:1s;}
 .userCheckBox button:hover{color:#fff; background:#9c836a; border:1px solid #9c836a;}
+
+
+/* joinCheck.jsp */
+#joinCheck {padding:15px;}
+#joinCheck input{width:180px; height:38px; border:1px solid #e6e3df; padding:0 12px; font-size:14px; font-weight:500; font-family:'Noto Sans'; margin:4px 0; transition:all .3s ease;}
+#joinCheck input:focus{border:1px solid #9c836a;}
+#joinCheck button{width:150px; height:38px; margin-left:5px; padding:0 32px; font-size:15px; color:#9c836a; border:1px solid #9c836a; transition:1s; cursor:pointer;}
+#joinCheck button:hover{color:#fff; background:#9c836a; border:1px solid #9c836a;cursor:pointer;}
+#joinCheck span{font-weight:700; color:#9c836a; font-size:15px; margin-top:10px; text-align:center; line-height:180%;}
+#joinCheck p{font-weight:700; color:#9c836a; font-size:15px; margin-top:10px; text-align:center;}
+#joinCheck hr{margin:20px 0;}
+
+
+
+
+
+
+
+
+

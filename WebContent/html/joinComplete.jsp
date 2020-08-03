@@ -20,8 +20,8 @@
 		
 		<section id="Content_container">
 			<div class="contentBox">
-				<h5>로그인</h5>		
-				<h4>워커힐 호텔에 오신 것을 환영합니다.</h4>
+				<h5>회원가입 완료</h5>		
+				<h4>워커힐 호텔의 회원으로 가입이 완료되었습니다.</h4>
 			</div>
 			<div class="fullBox_grey">
 				<div class="boxArea">

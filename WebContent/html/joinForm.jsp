@@ -28,20 +28,24 @@
 			<div class="fullBox_grey">
 				<div class="boxArea">
 					<div id="joinForm">
-						<form action="joinPro.jsp" method="post">
+						<form action="joinPro.jsp" method="post" name="join">
 							<h5>필수 입력정보</h5>
 							<span class="">아이디 </span>
-							<input type="text" name="id"> <button name="check">중복체크</button>
+							<input type="text" name="id"> <button type="button" name="check" onclick="winopen()">중복체크</button>
 							<span class="">비밀번호 </span>
 							<input type="passward" name="passwd" placeholder="영문(대,소문자), 숫자 포함8~12자리">
 							<span class="">비밀번호 확인 </span>
 							<input type="passward"" name="passwdCheck">
 							<span class="">이름 </span>
 							<input type="text" name="name">
+							<span class="">나이 </span>
+							<input type="number" name="age">
 							<span class="">핸드폰 번호 </span>
 							<input type="call" name="tel" placeholder="-없이 숫자만 입력해주세요.">
 							<hr>
 							<h5>선택 입력정보</h5>
+							<span class="">성별 </span>
+							남 <input type="radio" name="gender" value="man" class="gendertype"> 여 <input type="radio" name="gender" value="woman" class="gendertype">
 							<span class="">이메일 </span>
 							<input type="email" name="email">
 							<span class="">생년월일 </span>
@@ -59,5 +63,27 @@
 	<!-- 푸터영역 -->
 		<jsp:include page="../include/footer.jsp"/>
 	<!-- 푸터영역 -->
+	<script type="text/javascript">
+		/* 사용자가 회원가입 시 */
+		// 데이터 빈공백 체크
+		function winopen() {
+			// id를 입력하는 텍스트상자에 값이 비어있는지 판단
+			// 값이 비어있을 경우 id를 입력하시오 메시지, focus()
+			if(document.join.id.value==""){
+				alert("아이디를 입력하세요.");
+				document.join.id.focus();
+				return;
+			}else{
+				//값이 있을 경우 진행
+				// 새 창을 열어서 페이지 오픈
+				// ㄴ 이동 시 입력받은 ID값 가지고 이동
+				var id = document.join.id.value;
+				window.open("joinIdCheck.jsp?userid="+id,"","width=420, height=260");
+			}
+			
+		}
+	
+	</script>
+	
 </body>
 </html>
