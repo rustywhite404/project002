@@ -114,10 +114,42 @@ public class MemberDAO {
 	return result;
 	}// joinIdCheck(id) : 중복아이디 체크
 	
+	//idCheck(id, pw) : 로그인 처리 
+	public int idCheck(String id, String passwd){
+		int check = -1;
 	
-	
-	
-	
-	
+		try {
+			con = getCon();
+			// SQL 작성 & pstmt 객체 생성
+			sql = "select passwd from hotel_member where id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			// 데이터 처리
+			if(rs.next()){
+				// 아이디가 있다
+				if(passwd.equals(rs.getString("passwd"))){ // 아이디가 있고 비밀번호도 일치
+					System.out.println("로그인 성공!");
+					check = 1;
+				}else{ // 아이디가 있고 비밀번호는 불일치
+					check = 0;
+				}
+			}else{
+				// 아이디가 없다
+				check = -1;
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("로그인 처리 실패!");
+		}finally{
+			closeDB();
+		}
+		
+		return check;
+		
+	}//idCheck(id, pw) : 로그인 처리 
 	
 }
