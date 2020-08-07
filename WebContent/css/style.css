@@ -30,11 +30,23 @@
 #joinForm input{width:400px; height:48px; border:1px solid #e6e3df; padding:0 12px; font-size:14px; font-weight:500; font-family:'Noto Sans'; margin:4px 0; transition:all .3s ease; }
 #joinForm input:focus{border:1px solid #9c836a;}
 #joinForm hr{border:1px solid #eee; margin:40px 0;}
-
 .gendertype{width:18px !important;}
 
+/* myInfoModify.jsp */
+ 
+#modifyForm {margin:0 auto; width:400px;}
+#modifyForm h5{font-weight:500; font-size:16px; color:#666; padding-bottom:10px; }
+#modifyForm span{display:block; font-weight:500; color:#9c836a; font-size:15px; margin-top:10px;}
+#modifyForm button{width:150px; height:48px; margin-left:5px; padding:0 32px; font-size:15px; color:#9c836a; border:1px solid #9c836a; transition:1s;}
+#modifyForm .submit_b1{width:49%; height:48px; margin:20px 0 0 0; padding:0 32px; font-size:15px; background:#9c836a; color:#fff; transition:1s;}
+#modifyForm .submit_b2{width:49%; height:48px; margin:20px 0 0 5px; padding:0 32px; font-size:15px; color:#9c836a; border:1px solid #9c836a; transition:1s;}
+#modifyForm input{width:400px; height:48px; border:1px solid #e6e3df; padding:0 12px; font-size:14px; font-weight:500; font-family:'Noto Sans'; margin:4px 0; transition:all .3s ease; }
+#modifyForm input:focus{border:1px solid #9c836a;}
+#modifyForm hr{border:1px solid #eee; margin:40px 0;}
+
+
 /* boardList.jsp */
-#notice {margin-bottom:40px; position:relative;}
+#notice {margin:0 auto 40px auto; position:relative; width:80%;}
 .lineR{position:relative; display:block;}
 .lineR::before{content:""; margin-top:-6px;  position:absolute; top:50%; right:0; width:2px; height:15px; background:#ddd; display:inline-block; z-index:5;}
 #notice table.list{border-top:2px solid #747474; border-bottom:1px solid #747474;}
@@ -44,7 +56,8 @@
 .trSubject{text-align:left !important; padding-left:20px;}
 .trContent:hover{background:#eee;}
 #notice tr:LAST-CHILD{height:51px; text-align:center; border-bottom:1px solid #000 !important;}
-
+#notice button {width:96px; height:38px; margin-top:10px; padding:0 25px; font-size:14px; background:#9c836a; color:#fff; border:1px solid #9c836a; cursor:pointer;}
+#notice .write_btn{float:right;}
 
 /* myPage.jsp */
 
@@ -65,11 +78,39 @@
 #joinCheck p{font-weight:700; color:#9c836a; font-size:15px; margin-top:10px; text-align:center;}
 #joinCheck hr{margin:20px 0;}
 
+/* writeForm.jsp */
+#writeForm {width:70%; margin:0 auto 40px auto;}
+#writeForm table.list{border-top:2px solid #747474; border-bottom:1px solid #747474;}
+#writeForm th{border-top:1px solid #747474; border-bottom:1px solid #747474; height:51px; text-align:center; width:110px;}
+#writeForm td{height:51px; text-align:left; border-bottom:1px solid #ddd;}
+#writeForm input{border:1px solid #ccc; text-align:left; height:32px; padding:3px 5px; width:250px; margin-left:2px;}
+#writeForm .sub_input{width:98.5%;}
+#writeForm .file_input{width:99%;}
+#writeForm textarea{border:1px solid #ccc; margin:10px 4px;}
+#writeForm .write_btn {width:96px; height:38px; margin-top:10px; padding:0 25px; font-size:14px; background:#9c836a; color:#fff; border:1px solid #9c836a; cursor:pointer;}
+#writeForm .list_btn {width:96px; height:38px; margin-top:10px; padding:0 25px; font-size:14px; background:#fff; color:#9c836a; border:1px solid #9c836a; cursor:pointer;}
+#writeForm .btn_set{width:200px; margin:0 auto;}
 
+/* content.jsp */
+#contentView {width:80%; margin:0 auto 40px auto;}
+#contentView table.list{border-top:2px solid #747474; border-bottom:1px solid #747474;}
+#contentView th{border-top:1px solid #747474; border-bottom:1px solid #747474; height:51px; text-align:center; width:110px;}
+#contentView td{height:51px; text-align:left; border-bottom:1px solid #ddd;}
+#contentView input{border:1px solid #ccc; text-align:left; height:32px; padding:3px 5px; width:250px; margin-left:2px;}
+#contentView .sub_input{width:98.5%;}
+#contentView .file_input{width:99%;}
+#contentView textarea{border:1px solid #ccc; margin:10px 4px;}
+#contentView .write_btn {width:96px; height:38px; margin:10px 1px 0 1px; padding:0 25px; font-size:14px; background:#9c836a; color:#fff; cursor:pointer;}
+#contentView .list_btn {width:96px; height:38px; margin:10px 1px 0 1px; padding:0 25px; font-size:14px; background:#fff; color:#9c836a; border:1px solid #9c836a; cursor:pointer;}
+#contentView .btn_set_r{width:300px; margin:0 auto; text-align:right; float:right;}
+#contentView .btn_set_l{width:98px; float:left;}
 
-
-
-
-
+.pd10{padding:10px;}
+.pd20{padding:20px;}
+.pd30{padding:30px;}
+.pd40{padding:40px;}
+.pd50{padding:50px;}
+.pd60{padding:60px;}
+.pd70{padding:70px;}
 
 

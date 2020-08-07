@@ -19,36 +19,43 @@
 		
 		<section id="Content_container">
 			<div class="contentBox">
-				<div id="notice">
+				<div id="contentView">
 				<h5>공지사항</h5>		
-				<h4>워커힐의 공지사항 및 새로운 소식을 알려드립니다.</h4>
-					<form action="lisrPro.jsp" method="post"> 
+				
+					<form action="writePro.jsp" method="post"> 
 						<table class="list">
 							<colgroup>
-								<col width="110px">
-								<col width>
-								<col width="130px">
-								<col width="130px">
+								<!--  col width="110px"-->
 							</colgroup>
-							<thead>
 								<tr>
-									<th><span class="lineR">번호</span></th>
-									<th><span class="lineR">제목</span></th>
-									<th><span class="lineR">작성자</span></th>
-									<th>등록일</th>
+									<th>글번호</th>
+									<td>글번호</td>
+									<th>작성자</th>
+									<td>작성자명</td>
 								</tr>
-							</thead>
-							<tbody>
-								<tr class="trContent">
-									<td>번호</td>
-									<td class="trSubject"><a href="content.jsp">제목</a></td>
-									<td>작성자</td>
-									<td>등록일</td>
+								<tr>
+									<th>제목</th>
+									<td colspan="3">제목</td>
 								</tr>
-							</tbody>
+								<tr>
+									<th>내용</th>
+									<td colspan="3"><div class="pd30">내용</div></td>
+								</tr>
+								<tr>
+									<th>첨부파일</th>
+									<td colspan="3">첨부파일명</td>
+								</tr>
+
 						</table>
-						<button type="button" class="list_btn" onclick="location.href='boardList.jsp'">목록</button>
-						<button type="button" class="write_btn" onclick="location.href='writeForm.jsp'">글쓰기</button>
+						<div class="btn_set_l">
+						<button type="button" class="write_btn" onclick="location.href='boardList.jsp'">목록</button>
+						</div>
+						<div class="btn_set_r">
+							<button type="submit" class="write_btn">답글</button>
+							<button type="button" class="list_btn" onclick="location.href='modify.jsp'">수정</button>
+							<button type="button" class="list_btn" onclick="location.href='delete.jsp'">삭제</button>
+						</div>
+						<div class="clear"></div>
 					</form>
 				</div>
 			</div>
