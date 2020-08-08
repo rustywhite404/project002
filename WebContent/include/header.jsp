@@ -32,17 +32,18 @@
 					%>
 						<li><a href="../board/boardList.jsp">Notice</a></li>
 						<li><a href="">Reservation</a></li>
-						<li><a href="logout.jsp">Logout</a></li>
-						<li><a href="myPage.jsp">My Page</a></li>
-						<li><span class="gold" style="color:#9c836a;"><%=id%></span> 님 환영합니다.</li>
+						<li><a href="../html/logout.jsp">Logout</a></li>
+						<li><a href="../html/myPage.jsp">My Page</a></li>
+						<li><span class="gold" style="color:#9c836a"><%=id%></span> 님 환영합니다.</li>
 						
 					<%
 						}else{
 					%>
-						<li><a href="login.jsp">Login</a></li>
-						<li><a href="joinForm.jsp">Join</a></li>
 						<li><a href="../board/boardList.jsp">Notice</a></li>
 						<li><a href="">Reservation</a></li>
+						<li><a href="../html/login.jsp">Login</a></li>
+						<li><a href="../html/joinForm.jsp">Join</a></li>
+						
 					<%		
 						}
 					%>				

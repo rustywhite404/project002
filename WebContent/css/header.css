@@ -75,5 +75,5 @@
 /* #mainMenu li:hover .mainDropdown {display: block; opacity:0.5; transition: all 1s; } 
 #mainMenu li:hover .mainDropdown:hover{display: block; opacity:1; transform:matrix(1,0,0,1,0,20); }*/
 
-.gold{color:#9c836a !important; font-weight:700;}
-
+.gold{display:inline; color:#9c836a !important; font-weight:700;}
+/* 인식 못하는 문제 있음. class 자체에 style로 넣고 추후 수정*/

@@ -17,6 +17,14 @@
 	<!-- 서브페이지 헤더 -->
 		<jsp:include page="../include/sub.jsp"/>
 	<!-- 본문영역 -->
+		<%
+			// 비회원은 탈퇴할 수 없으니까 로그인 한 회원인지 확인
+			String id = (String)session.getAttribute("id");
+			if(id==null){
+				response.sendRedirect("login.jsp");
+			}
+		
+		%>
 		
 		<section id="Content_container">
 			<div class="contentBox">
@@ -30,7 +38,8 @@
 					<h5>비밀번호 확인</h5>
 					<p>안전한 회원 탈퇴를 위하여 비밀번호를 다시 한 번 확인받고 있습니다.</p>
 						<form action="deletePro.jsp" method="post">
-							<input type="password" name="id" placeholder="비밀번호를 입력하세요.">
+							<input type="hidden" value="<%=id%>" name="id">
+							<input type="password" name="passwd" placeholder="비밀번호를 입력하세요.">
 							<button type="submit" onclick="location.href='loginForm.jsp'">개인정보 확인</button>
 						</form>
 					</div>

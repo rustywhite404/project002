@@ -1,3 +1,5 @@
+<%@page import="net.ivyro.zian.member.MemberBean"%>
+<%@page import="net.ivyro.zian.member.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -24,65 +26,90 @@
 				<h4>비밀번호는 주기적으로<br>
 				변경해 주실 것을 권장합니다.</h4>
 			</div>
+			<%
+				// 로그인 없이 접근할 수 없는 페이지
+				// 로그인 없이 접근할 경우 로그인 페이지로 이동
+				String id = (String)session.getAttribute("id");
+				
+				if(id==null){
+					response.sendRedirect("login.jsp");
+				}
+				
+				// 회원정보를 DB에서 가져와서 페이지에 출력할 때,
+				// 한글인 정보들도 있을테니까 한글화
+				request.setCharacterEncoding("UTF-8");
+				
+				//DB연결
+				MemberDAO mdao = new MemberDAO();
+				
+				// id에 해당하는 회원정보 가져오는 메서드 생성(getMember(id))
+				// -> 그 id의 정보를 모두 리턴받아서 폼에 추가
+				MemberBean mb = mdao.getMember(id);
+				
+				if(mb!=null){
+			%>
 			<div class="fullBox_grey">
 				<div class="boxArea">
 					<div id="modifyForm">
-						<form action="modifyPro.jsp" method="post" name="join">
+						<form action="updatePro.jsp" method="post" name="join">
 							<h5>필수 입력정보</h5>
 							<span class="">아이디 </span>
-							<input type="text" name="id" readonly>
+							<input type="text" name="id" value="<%=mb.getId()%>" readonly>
 							<span class="">비밀번호 </span>
-							<input type="passward" name="passwd" placeholder="영문(대,소문자), 숫자 포함8~12자리">
-							<span class="">비밀번호 확인 </span>
-							<input type="passward"" name="passwdCheck">
+							<input type="password" name="passwd" placeholder="회원정보를 수정하려면 비밀번호를 입력하세요.">
 							<span class="">이름 </span>
-							<input type="text" name="name">
+							<input type="text" name="name" value="<%=mb.getName()%>">
 							<span class="">나이 </span>
-							<input type="number" name="age">
+							<input type="number" name="age" value="<%=mb.getAge()%>">
 							<span class="">핸드폰 번호 </span>
-							<input type="call" name="tel" placeholder="-없이 숫자만 입력해주세요.">
+							<input type="call" name="tel" value="<%=mb.getMobile()%>">
 							<hr>
 							<h5>선택 입력정보</h5>
 							<span class="">성별 </span>
-							남 <input type="radio" name="gender" value="man" class="gendertype"> 여 <input type="radio" name="gender" value="woman" class="gendertype">
+							남 <input type="radio" name="gender" value="man" class="gendertype"
+							<% 
+								if(mb.getGender().equals("man")){
+							%>
+								checked>
+							<%		
+								}else{
+							
+								%>
+									>
+								<%
+								}
+							%>
+							여 <input type="radio" name="gender" value="woman" class="gendertype"
+							<% 
+								if(mb.getGender().equals("woman")){
+							%>
+								checked>
+							<%		
+								}else{
+							
+								%>
+									>
+								<%
+								}
+							%>
 							<span class="">이메일 </span>
-							<input type="email" name="email">
+							<input type="email" name="email" value="<%=mb.getEmail()%>">
 							<span class="">생년월일 </span>
-							<input type="date" name="birth">
+							<input type="date" name="birth" value="<%=mb.getBirth()%>">
 							<span class="">주소 </span>
-							<input type="address" name="addr"><br>
-							<button type="submit" class="submit_b1">회원정보수정</button><button type="reset" class="submit_b2" onclick="location.href='delete.jsp'">회원탈퇴</button>
+							<input type="text" name="address" value="<%=mb.getAddr()%>"><br>
+							<button type="submit" class="submit_b1">회원정보수정</button><button type="button" class="submit_b2" onclick="location.href='delete.jsp'">회원탈퇴</button>
 						</form>
 					</div>
 				</div>
 			</div>
+			<% } %>
 		</section>	
 	<!-- 본문영역 -->
 	
 	<!-- 푸터영역 -->
 		<jsp:include page="../include/footer.jsp"/>
 	<!-- 푸터영역 -->
-	<script type="text/javascript">
-		/* 사용자가 회원가입 시 */
-		// 데이터 빈공백 체크
-		function winopen() {
-			// id를 입력하는 텍스트상자에 값이 비어있는지 판단
-			// 값이 비어있을 경우 id를 입력하시오 메시지, focus()
-			if(document.join.id.value==""){
-				alert("아이디를 입력하세요.");
-				document.join.id.focus();
-				return;
-			}else{
-				//값이 있을 경우 진행
-				// 새 창을 열어서 페이지 오픈
-				// ㄴ 이동 시 입력받은 ID값 가지고 이동
-				var id = document.join.id.value;
-				window.open("joinIdCheck.jsp?userid="+id,"","width=420, height=260");
-			}
-			
-		}
-	
-	</script>
 	
 </body>
 </html>

@@ -152,4 +152,176 @@ public class MemberDAO {
 		
 	}//idCheck(id, pw) : 로그인 처리 
 	
+	//myPageCheck(id, passwd) : 회원정보 페이지 접근
+	public int myPageCheck(String id, String passwd){
+		
+		int result = -1; 
+		
+		try {
+			con = getCon();
+			// SQL 작성 + PSTMT 
+			sql = "select passwd from hotel_member where id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			// 데이터 처리
+			if(rs.next()){
+				// id가 있을 경우
+				if(passwd.equals(rs.getString("passwd"))){
+					// id 있고 비밀번호도 맞을 경우
+					System.out.println("사용자 확인되었습니다.");
+					result = 1;
+				}else{ // 비밀번호가 틀릴 경우
+					System.out.println("비밀번호가 잘못되었습니다.");
+					result = 0;
+					}
+			}else{ // id가 없을 경우
+				System.out.println("잘못된 접근입니다!");
+				result = -1;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("회원정보 수정을 위한 비밀번호 체크 중 예외 발생!");
+		}finally{
+			closeDB();
+		}		
+		
+		return result;		
+	} //myPageCheck(id, passwd) : 회원정보 페이지 접근
+	
+	//getMember(id) : 회원정보 보기
+	public MemberBean getMember(String id){
+		MemberBean mb = null;
+		
+		try {
+			con = getCon();
+			sql = "select * from hotel_member where id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			// 데이터처리
+			if(rs.next()){
+				// DB에 있는 회원 정보를 페이지로 전달 
+				// try 바깥에 멤버변수 mb를 준비해서, rs.next() 정보를 mb에 멤버빈으로 저장
+				mb = new MemberBean(); // 멤버빈 생성
+				
+				// DB데이터 멤버빈에 담기
+				mb.setAge(rs.getInt("age"));
+				mb.setAddr(rs.getString("addr"));
+				mb.setBirth(rs.getString("birth"));
+				mb.setEmail(rs.getString("email"));
+				mb.setGender(rs.getString("gender"));
+				mb.setId(rs.getString("id"));
+				mb.setMobile(rs.getInt("mobile"));
+				mb.setName(rs.getString("name"));
+				mb.setPasswd(rs.getString("passwd"));
+				mb.setPost(rs.getInt("post"));
+				mb.setReg_date(rs.getDate("reg_date"));
+				
+				System.out.println("회원정보 저장완료!");
+			}else{
+				System.out.println("존재하지 않는 회원(에러발생)");
+			}	
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			closeDB();
+		}
+		
+		return mb;	
+		
+	}//getMember(id) : 회원정보 보기
+	
+	//updateMember(mb) : 회원정보 수정
+	
+	public int updateMember(MemberBean mb){
+		int result = -1;
+		
+		try {
+			con = getCon();
+			sql = "select passwd from hotel_member where id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, mb.getId());
+			rs = pstmt.executeQuery();
+			
+			// 데이터 처리
+			if(rs.next()){
+				// 사용자가 있을 경우
+				if(mb.getPasswd().equals(rs.getString("passwd"))){ // 사용자가 있고 비밀번호도 같을 경우 정보 업데이트
+					sql = "update hotel_member set name=?, age=?, mobile=?, gender=?, email=?, birth=?, addr=? where id=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, mb.getName());
+					pstmt.setInt(2, mb.getAge());
+					pstmt.setInt(3, mb.getMobile());
+					pstmt.setString(4, mb.getGender());
+					pstmt.setString(5, mb.getEmail());
+					pstmt.setString(6, mb.getBirth());
+					pstmt.setString(7, mb.getAddr());
+					pstmt.setString(8, mb.getId());
+					
+					pstmt.executeUpdate();
+					System.out.println("정보수정 완료!");
+					result = 1;
+				}else{// 비밀번호가 다를 경우
+					result = 0;
+				}			
+			}else{
+				// 사용자가 없을 경우
+				result = -1;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("정보 수정 실패!");
+		}finally{
+			closeDB();
+		}
+		
+		
+		return result;
+		
+	}//updateMember(mb) : 회원정보 수정
+	
+	//deleteMember(id, passwd) : 회원 탈퇴
+	public int deleteMember(String id, String passwd){
+		int check = -1;
+		
+		try {
+			con = getCon();
+			sql = "select passwd from hotel_member where id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			// 계산
+			if(rs.next()){ // 해당하는 아이디가 있다
+				if(passwd.equals(rs.getString("passwd"))){
+					sql="delete from hotel_member where id=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, id);
+					pstmt.executeUpdate();
+					check = 1;
+				}else{
+					check = 0;
+				}
+				
+			}else{
+				// 해당하는 아이디가 없다
+				check = -1;
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("회원 탈퇴 처리 중 예외 발생!");
+		}finally{
+			closeDB();
+		}
+		
+		return check;
+	}//deleteMember(id, passwd) : 회원 탈퇴
 }
