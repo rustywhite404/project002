@@ -19,36 +19,38 @@
 		
 		<section id="Content_container">
 			<div class="contentBox">
-				<div id="notice">
-				<h5>공지사항</h5>		
-				<h4>워커힐의 공지사항 및 새로운 소식을 알려드립니다.</h4>
-					<form action="lisrPro.jsp" method="post"> 
+				<div id="writeForm">
+				<h5>글쓰기</h5>		
+				
+					<form action="writePro.jsp" method="post"> 
 						<table class="list">
 							<colgroup>
-								<col width="110px">
-								<col width>
-								<col width="130px">
-								<col width="130px">
+								<!--  col width="110px"-->
 							</colgroup>
-							<thead>
 								<tr>
-									<th><span class="lineR">번호</span></th>
-									<th><span class="lineR">제목</span></th>
-									<th><span class="lineR">작성자</span></th>
-									<th>등록일</th>
+									<th>작성자</th>
+									<td><input type="text" name="name"></td>
+									<th>비밀번호</th>
+									<td><input type="password" name="passwd"></td>
 								</tr>
-							</thead>
-							<tbody>
-								<tr class="trContent">
-									<td>번호</td>
-									<td class="trSubject"><a href="content.jsp">제목</a></td>
-									<td>작성자</td>
-									<td>등록일</td>
+								<tr>
+									<th>제목</th>
+									<td colspan="3"><input type="text" name="subject" value="제목" class="sub_input"></td>
 								</tr>
-							</tbody>
+								<tr>
+									<th>내용</th>
+									<td colspan="3"><textarea cols="92" rows="20"></textarea></td>
+								</tr>
+								<tr>
+									<th>첨부파일</th>
+									<td colspan="3"><input type="file" name="file" class="file_input"></td>
+								</tr>
+
 						</table>
-						<button type="button" class="list_btn" onclick="location.href='boardList.jsp'">목록</button>
-						<button type="button" class="write_btn" onclick="location.href='writeForm.jsp'">글쓰기</button>
+						<div class="btn_set"> 
+							<button type="button" class="list_btn" onclick="location.href='boardList.jsp'">취소</button>
+							<button type="submit" class="write_btn">등록</button>
+						</div>
 					</form>
 				</div>
 			</div>

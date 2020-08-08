@@ -30,11 +30,11 @@
 					<%
 						if(id!=null){
 					%>
-						<li><a href="">Reservation</a></li>
 						<li><a href="../board/boardList.jsp">Notice</a></li>
+						<li><a href="">Reservation</a></li>
 						<li><a href="logout.jsp">Logout</a></li>
 						<li><a href="myPage.jsp">My Page</a></li>
-						<li><%=id%>님 환영합니다.</li>
+						<li><span class="gold" style="color:#9c836a;"><%=id%></span> 님 환영합니다.</li>
 						
 					<%
 						}else{

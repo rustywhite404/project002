@@ -4,13 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Hotel | Personal Project</title>
+<title>Insert title here</title>
 </head>
 <body>
 	<%
-		// 프로젝트의 시작페이지
-		response.sendRedirect("html/main.jsp");
+		// 로그아웃 처리(= 세션값 초기화)
+		session.invalidate();
+		response.sendRedirect("main.jsp");
 		
 	%>
 </body>
-</html> 
+</html>

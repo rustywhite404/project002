@@ -36,11 +36,10 @@
   clear:both;
   padding:10px;
   font-size:15px;
-  opacity:0.1;
   opacity:1;
   transition: all 2s;
   transform:matrix(1,0,0,1,0,20);
-
+  
   animation-name: bounce; 
   animation-duration: 1s; /*2초동안*/
   animation-iteration-count: 0 /*1회 반복*/
@@ -75,3 +74,6 @@
 #mainMenu li:hover .mainDropdown {display: block; transition: all 1s; }
 /* #mainMenu li:hover .mainDropdown {display: block; opacity:0.5; transition: all 1s; } 
 #mainMenu li:hover .mainDropdown:hover{display: block; opacity:1; transform:matrix(1,0,0,1,0,20); }*/
+
+.gold{color:#9c836a !important; font-weight:700;}
+
