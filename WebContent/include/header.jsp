@@ -10,6 +10,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<% 
+		// 로그인 처리 할 세션 id값 받아오기
+		String id = (String)session.getAttribute("id");
+	%>
 	<header id="#headerBox">
 		<div class="logoNav"><a href="../index.jsp"><img src="../img/logo.svg"></a></div>
 		<div id="topMenu">
@@ -23,12 +27,26 @@
 			</div>
 			<div class="rightSide">
 				<ul>
-					<li><a href="../html/myPage.jsp">My Page</a></li>
-					<li><a href="../html/joinForm.jsp">Join</a></li>
-					<li><a href="../html/login.jsp">Login</a></li>
-					<li><a href="">Logout</a></li>
-					<li><a href="">Reservation</a></li>
-					<li><a href="../board/boardList.jsp">Notice</a></li>
+					<%
+						if(id!=null){
+					%>
+						<li><a href="">Reservation</a></li>
+						<li><a href="../board/boardList.jsp">Notice</a></li>
+						<li><a href="logout.jsp">Logout</a></li>
+						<li><a href="myPage.jsp">My Page</a></li>
+						<li><%=id%>님 환영합니다.</li>
+						
+					<%
+						}else{
+					%>
+						<li><a href="login.jsp">Login</a></li>
+						<li><a href="joinForm.jsp">Join</a></li>
+						<li><a href="../board/boardList.jsp">Notice</a></li>
+						<li><a href="">Reservation</a></li>
+					<%		
+						}
+					%>				
+					
 				</ul>
 			</div>
 		</div>

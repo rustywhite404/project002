@@ -1,8 +1,8 @@
 @CHARSET "UTF-8";
 
 
-.bg_video{width: 96%; height:850px; overflow: hidden; margin:0px auto; position: relative; z-index:0; }
-video { width: 100%; }
+.bg_video{width: 96%; background:#fff; height:850px; overflow: hidden; margin:0px auto; position: relative; z-index:0; }
+video { width: 100%; background:#fff;}
 .jb-text { position: absolute; top: 50%; width: 100%; }
 .jb-text p { margin-top: -24px; text-align: center; font-size: 48px; color: #ffffff; }
 .jb-text p:after{content:""; position:absolute; width:150px; height:1px; background:#fff; top:50px; left:0; right:0; margin:0 auto;}

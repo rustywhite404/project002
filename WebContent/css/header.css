@@ -37,8 +37,31 @@
   padding:10px;
   font-size:15px;
   opacity:0.1;
+  opacity:1;
   transition: all 2s;
+  transform:matrix(1,0,0,1,0,20);
+
+  animation-name: bounce; 
+  animation-duration: 1s; /*2초동안*/
+  animation-iteration-count: 0 /*1회 반복*/
+  animation-direction: normal; /*애니메이션종료후 진행방향*/
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both; /*시작프레임에 설정한 스타일적용하고 대기*/
+  animation-delay: 0s; /*0초뒤에 애니메이션 동작*/
+
 }
+@keyframes bounce{
+  0%{transform:translate(0,0)}
+  50%{transform:translate(0, 20px)}
+  100%{transform:translate(0, 20px)}
+
+}
+@-webkit-keyframes bounce{
+   0%{transform:translate(0,0)}
+  50%{transform:translate(0, 20px)}
+  100%{transform:translate(0, 20px)}
+}
+
 
 #mainMenu li .mainDropdown li{padding:10px;}
 
@@ -49,5 +72,6 @@
 
 #mainMenu li:hover .mainDropdown {display: block; opacity:0.5; transition: all 1s; }
 #mainMenu li:hover .mainDropdown:hover{display: block; opacity:1; transform:matrix(1,0,0,1,0,20); }
-
-
+#mainMenu li:hover .mainDropdown {display: block; transition: all 1s; }
+/* #mainMenu li:hover .mainDropdown {display: block; opacity:0.5; transition: all 1s; } 
+#mainMenu li:hover .mainDropdown:hover{display: block; opacity:1; transform:matrix(1,0,0,1,0,20); }*/
