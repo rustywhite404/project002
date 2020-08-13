@@ -16,6 +16,9 @@
 	<!-- 서브페이지 헤더 -->
 		<jsp:include page="../include/sub.jsp"/>
 	<!-- 본문영역 -->
+		<%
+			String id = (String)session.getAttribute("id");
+		%>
 		
 		<section id="Content_container">
 			<div class="contentBox">
@@ -28,6 +31,7 @@
 								<!--  col width="110px"-->
 							</colgroup>
 								<tr>
+									<input type="hidden" name="id">
 									<th>작성자</th>
 									<td><input type="text" name="name"></td>
 									<th>비밀번호</th>
@@ -35,11 +39,11 @@
 								</tr>
 								<tr>
 									<th>제목</th>
-									<td colspan="3"><input type="text" name="subject" value="제목" class="sub_input"></td>
+									<td colspan="3"><input type="text" name="subject" class="sub_input"></td>
 								</tr>
 								<tr>
 									<th>내용</th>
-									<td colspan="3"><textarea cols="92" rows="20"></textarea></td>
+									<td colspan="3"><textarea cols="92" rows="20" name="content"></textarea></td>
 								</tr>
 								<tr>
 									<th>첨부파일</th>

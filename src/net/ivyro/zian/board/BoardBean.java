@@ -4,7 +4,11 @@ import java.sql.Date;
 
 public class BoardBean {
 
+
+
+
 private int bno;
+private String id;
 private String name;
 private String passwd;
 private String subject;
@@ -17,7 +21,6 @@ private Date date;
 private String file;
 private String ip;
 
-
 public int getBno() {
 	return bno;
 }
@@ -26,6 +29,14 @@ public void setBno(int bno) {
 	this.bno = bno;
 }
 
+public String getId() {
+	return id;
+}
+
+
+public void setId(String id) {
+	this.id = id;
+}
 
 public String getName() {
 	return name;
@@ -118,11 +129,10 @@ public void setIp(String ip) {
 
 @Override
 public String toString() {
-	return "BoardBean [bno=" + bno + ", name=" + name + ", passwd=" + passwd + ", subject=" + subject + ", content="
-			+ content + ", readcount=" + readcount + ", re_ref=" + re_ref + ", re_lev=" + re_lev + ", re_seq=" + re_seq
-			+ ", date=" + date + ", file=" + file + ", ip=" + ip + "]";
+	return "BoardBean [bno=" + bno + ", id=" + id + ", name=" + name + ", passwd=" + passwd + ", subject=" + subject
+			+ ", content=" + content + ", readcount=" + readcount + ", re_ref=" + re_ref + ", re_lev=" + re_lev
+			+ ", re_seq=" + re_seq + ", date=" + date + ", file=" + file + ", ip=" + ip + "]";
 }
-
 
 	
 }
