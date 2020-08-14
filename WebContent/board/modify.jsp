@@ -19,63 +19,52 @@
 		<jsp:include page="../include/sub.jsp"/>
 	<!-- 본문영역 -->
 		<%
-			//한글화
-			request.setCharacterEncoding("UTF-8");
-			// 글번호에 해당하는 글의 정보 가져오고 넘어온 데이터 저장(bno, pageNum)	
-			int bno = Integer.parseInt(request.getParameter("bno")) ;
+		
+			int bno =Integer.parseInt(request.getParameter("bno"));
 			String pageNum = request.getParameter("pageNum");
-			
-			// BoardDAO 객체 생성
+
+			//BoardDAO 객체 생성
 			BoardDAO bdao = new BoardDAO();
-			
-			// 글 조회수를 1 증가 시키기(updateReadCount(bno))
-			bdao.updateReadCount(bno);
-			
-			// 글 정보 가져오기(getBoard(bno))
-			// 글 번호에 해당하는 글 정보여야 하니까 글번호 받아가야함 
-			BoardBean bb = bdao.getBoard(bno);
+			// 글 불러오기 - getBoard(bno)만든 거 그대로 써도 될 것 같음
+			BoardBean bb = bdao.getBoard(bno);			
 			
 		%>
 		
 		<section id="Content_container">
 			<div class="contentBox">
-				<div id="contentView">
-				<h5>공지사항</h5>		
+				<div id="writeForm">
+				<h5>글 수정하기</h5>		
 				
-					<form> 
+					<form action="modifyPro.jsp?pageNum=<%=pageNum %>" method="post"> 
 						<table class="list">
 							<colgroup>
 								<!--  col width="110px"-->
 							</colgroup>
 								<tr>
-									<th>글번호</th>
-									<td><%= bb.getBno() %></td>
+									<input type="hidden" name="bno" value="<%=bb.getBno()%>">
 									<th>작성자</th>
-									<td><%= bb.getName() %></td>
+									<td><input type="text" name="name" value="<%=bb.getName()%>"></td>
+									<th>비밀번호</th>
+									<td><input type="password" name="passwd"></td>
 								</tr>
 								<tr>
 									<th>제목</th>
-									<td colspan="3"><%= bb.getSubject() %></td>
+									<td colspan="3"><input type="text" name="subject" class="sub_input" value="<%=bb.getSubject()%>"></td>
 								</tr>
 								<tr>
 									<th>내용</th>
-									<td colspan="3" class="content"><div class="pd30"><%= bb.getContent() %></div></td>
+									<td colspan="3"><textarea cols="92" rows="20" name="content"><%=bb.getContent()%></textarea></td>
 								</tr>
 								<tr>
 									<th>첨부파일</th>
-									<td colspan="3"><%=bb.getFile() %></td>
+									<td colspan="3"><input type="file" name="file" class="file_input" value="<%=bb.getFile()%>"></td>
 								</tr>
 
 						</table>
-						<div class="btn_set_l">
-						<button type="button" class="write_btn" onclick="location.href='boardList.jsp?pageNum=<%=pageNum%>'">목록</button>
+						<div class="btn_set"> 
+							<button type="button" class="list_btn" onclick="location.href='boardList.jsp?pageNum=<%=pageNum%>'">취소</button>
+							<button type="submit" class="write_btn">등록</button>
 						</div>
-						<div class="btn_set_r">
-							<button type="submit" class="write_btn">답글</button>
-							<button type="button" class="list_btn" onclick="location.href='modify.jsp?bno=<%=bb.getBno()%>&pageNum=<%=pageNum%>'">수정</button>
-							<button type="button" class="list_btn" onclick="location.href='delete.jsp?bno=<%=bb.getBno()%>&pageNum=<%=pageNum%>'">삭제</button>
-						</div>
-						<div class="clear"></div>
 					</form>
 				</div>
 			</div>

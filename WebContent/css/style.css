@@ -100,7 +100,8 @@
 #contentView input{border:1px solid #ccc; text-align:left; height:32px; padding:3px 5px; width:250px; margin-left:2px;}
 #contentView .sub_input{width:98.5%;}
 #contentView .file_input{width:99%;}
-#contentView textarea{border:1px solid #ccc; margin:10px 4px;}
+#contentView textarea{border:1px solid #ccc; margin:10px 4px; }
+#contentView .content{text-align:justify; line-height:180%; font-size:15px;}
 #contentView .write_btn {width:96px; height:38px; margin:10px 1px 0 1px; padding:0 25px; font-size:14px; background:#9c836a; color:#fff; cursor:pointer;}
 #contentView .list_btn {width:96px; height:38px; margin:10px 1px 0 1px; padding:0 25px; font-size:14px; background:#fff; color:#9c836a; border:1px solid #9c836a; cursor:pointer;}
 #contentView .btn_set_r{width:300px; margin:0 auto; text-align:right; float:right;}
@@ -113,5 +114,7 @@
 .pd50{padding:50px;}
 .pd60{padding:60px;}
 .pd70{padding:70px;}
-
-
+.npd{padding:0 !important;}
+/* pagination 공통 */
+#pagination {text-align:center;}
+#pagination a{display:inline-block; margin:0 3px;}

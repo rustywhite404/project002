@@ -189,8 +189,145 @@ public class BoardDAO {
 			
 			return boardList;
 		}//getBoardList(startRow, pageSize) : 페이징 처리 된 글 모두 가져오기
-
-
+		
+		//updateReadCount(bno) : 글 조회수 증가 처리
+		public void updateReadCount(int bno){
+			
+			try {
+				con = getCon();
+				sql = "update hotel_board set readcount=readcount+1 where bno=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, bno);
+				pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("조회수 증가 처리 중 예외 발생");
+			}finally{
+				closeDB();
+			}
+			
+		}//updateReadCount(bno) : 글 조회수 증가 처리
+		
+		//getBoard(bno) : 글 정보 가져오기
+		public BoardBean getBoard(int bno){
+			BoardBean bb = null; 
+			
+			try {
+				con = getCon();
+				sql = "select * from hotel_board where bno = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, bno);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()){
+					bb = new BoardBean();
+					bb.setBno(rs.getInt("bno"));
+					bb.setContent(rs.getString("content"));
+					bb.setDate(rs.getDate("date"));
+					bb.setFile(rs.getString("file"));
+					bb.setId(rs.getString("id"));
+					bb.setName(rs.getString("name"));
+					bb.setPasswd(rs.getString("passwd"));
+					bb.setRe_lev(rs.getInt("re_lev"));
+					bb.setRe_ref(rs.getInt("re_ref"));
+					bb.setRe_seq(rs.getInt("re_seq"));
+					bb.setReadcount(rs.getInt("readcount"));
+					bb.setSubject(rs.getString("subject"));
+				}
+				System.out.println("글 정보 저장 완료");
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("글 정보 불러오는 중 예외 발생!");
+			}finally{
+				closeDB();
+			}
+			
+			return bb;
+		} //getBoard(bno) : 글 정보 가져오기
+		
+		// deleteBoard() : 글 삭제하기
+		public int deleteBoard(int bno, String passwd){
+			int check = -1;
+			try {
+				con = getCon();
+				sql = "select passwd from hotel_board where bno=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, bno);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()){
+					if(rs.getString("passwd").equals(passwd)){
+						sql = "delete from hotel_board where bno=?";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setInt(1, bno);
+						pstmt.executeUpdate();
+						System.out.println("글 삭제 완료!");
+						check = 1;
+					}else{
+						// 비밀번호가 틀림
+						System.out.println("비밀번호 틀림!");
+						check = 0;
+					}
+				}else{
+					check = -1;
+					System.out.println("글 삭제 에러!"+check);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("글 삭제 중 예외 발생!");
+			}finally{
+				closeDB();
+			}
+			return check;
+		}
+		
+		// deleteBoard() : 글 삭제하기
+		
+		//updateBoard(bb): 글 수정하기
+		public int updateBoard(BoardBean bb){
+			int check = -1;
+			try {
+				con = getCon();
+				sql ="select passwd from hotel_board where bno=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, bb.getBno());
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()){
+					if(bb.getPasswd().equals(rs.getString("passwd"))){
+						sql = "update hotel_board set name=?, subject=?, content=?, file=? where bno=?";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, bb.getName());
+						pstmt.setString(2, bb.getSubject());
+						pstmt.setString(3, bb.getContent());
+						pstmt.setString(4, bb.getFile());
+						pstmt.setInt(5, bb.getBno());
+						
+						pstmt.executeUpdate();
+						check = 1;
+					}else{
+						System.out.println("비밀번호가 틀립니다.");
+						check=0;
+					}
+					
+				}else{
+					System.out.println("에러:글이 없습니다!");
+					check = -1;
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("글 수정 중 예외 발생!");
+			}finally{
+				closeDB();
+			}
+			return check;			
+		}
+		
+		//updateBoard(bb): 글 수정하기
+		
+		
 }
 
 

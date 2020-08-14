@@ -65,9 +65,7 @@
 	// 페이징처리**************************************
 	// 게시판의 글 수를 모두 화면에 출력
 	%>
-	<h4>게시판의 글 수: <%= cnt %>개 </h4>
 
-	
 	<%
 	// 3. 글 모두 가져오기 getBoardList() 생성
 	ArrayList boardList = null;
@@ -104,7 +102,7 @@
 							</thead>
 							
 							<% 
-							if(cnt!=0){
+							if(cnt!=0){ // 글이 0이 아닐 경우 이 부분 불러오고, 글이 0일 경우 안 뜨도록 
 								for(int i=0;i<boardList.size();i++){
 									BoardBean bb = (BoardBean)boardList.get(i);
 									//ArrayList에서 가져온 한 칸의 정보 -> BoardBean 객체 하나로 이동
@@ -148,7 +146,7 @@
 			// 삼항연산자 써서 표기
 			
 			// 한 화면에 보여줄 페이지 번호 개수
-			int pageBlock = 3; // 게시판 하단에 보이는 페이지 번호 개수 말하는거
+			int pageBlock = 5; // 게시판 하단에 보이는 페이지 번호 개수 말하는거
 			
 			// 페이지 블럭의 시작페이지 번호
 			int startPage = ((currentPage-1)/pageBlock)*pageBlock+1;
@@ -167,21 +165,21 @@
 			// 내가 뒷 블럭에서 보고 있어야 이전 블럭으로 갈 수 있겠지?
 			if(startPage>pageBlock){
 				%>
-					<a href="boardList.jsp?pageNum=<%=startPage-pageBlock%>">[prev]</a>
+					<a href="boardList.jsp?pageNum=<%=startPage-pageBlock%>">◀ </a>
 				<%
 			}
 			
 			// 숫자(1...10/11...20/21...30)
 			for(int i=startPage;i<=endPage;i++){
 				%>
-					<a href="boardList.jsp?pageNum=<%=i%>">[<%=i %>]</a>
+					<a href="boardList.jsp?pageNum=<%=i%>"><%= i %></a>
 				<%
 			}
 			
 			// 다음(next)
 			if(endPage<pageCount){
 				%>
-				<a href="boardList.jsp?pageNum=<%=startPage+pageBlock%>">[next]</a>
+				<a href="boardList.jsp?pageNum=<%=startPage+pageBlock%>"> ▶</a>
 				<%
 			}
 		}

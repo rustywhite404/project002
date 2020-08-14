@@ -34,7 +34,7 @@
 						<li><a href="">Reservation</a></li>
 						<li><a href="../html/logout.jsp">Logout</a></li>
 						<li><a href="../html/myPage.jsp">My Page</a></li>
-						<li><span class="gold" style="color:#9c836a"><%=id%></span> 님 환영합니다.</li>
+						<li><span class="gold"><%=id%></span> 님 환영합니다.</li>
 						
 					<%
 						}else{
