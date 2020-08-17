@@ -18,12 +18,6 @@
 		<jsp:include page="../include/sub.jsp"/>
 	<!-- 본문영역 -->
 		<%
-			// 로그인 한 회원인지 확인 
-			String id = (String)session.getAttribute("id");
-			if(id==null){
-				response.sendRedirect("login.jsp");
-			}
-			
 			// content.jsp에서 bno, pageNum 받아온 거 저장
 			
 			int bno = Integer.parseInt(request.getParameter("bno")) ;

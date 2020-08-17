@@ -59,16 +59,16 @@
 				<li><a href="">Facility</a></li>
 				<li><a href="">Event</a>
 					<ul class="mainDropdown">
-						<li><a href="">이벤트게시판</a></li>
-						<li><a href="">이벤트게시판</a></li>
-						<li><a href="">이벤트게시판</a></li>
+						<li><a href="">Promotion</a></li>
+						<li><a href="">Event</a></li>
+						<li><a href="">Photo Review</a></li>
 					</ul>
 				</li>
 				<li><a href="">Membership</a>
 					<ul class="mainDropdown">
-						<li><a href="">이벤트게시판</a></li>
-						<li><a href="">이벤트게시판</a></li>
-						<li><a href="">이벤트게시판</a></li>
+						<li><a href="">공지사항</a></li>
+						<li><a href="">Photo Review</a></li>
+						<li><a href="../file/down_list.jsp">Download</a></li>
 					</ul>
 				</li>
 				<li><a href="">Customer</a></li>

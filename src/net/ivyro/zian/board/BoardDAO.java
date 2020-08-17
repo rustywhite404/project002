@@ -327,7 +327,61 @@ public class BoardDAO {
 		
 		//updateBoard(bb): 글 수정하기
 		
-		
+		//reWriteBoard(bb) : 답글 추가하기
+		public void reWriteBoard(BoardBean bb){
+			int num = 0;
+			try {
+				con = getCon();
+				
+				// select - 게시판 글번호 중 최대값 가져오기 & pstmt 
+				sql = "select max(bno) from hotel_board";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next())
+					num = rs.getInt(1)+1; // max번호 + 1
+				System.out.println("답글번호:"+num);
+				
+				/*****답글 순서 재배치*****/
+				//re_ref(같은 그룹) 기준 re_seq값이 기존의 값보다 큰 게 있을 경우
+				// re_seq 값을 1 증가
+				sql = "update hotel_board set re_seq=re_seq+1 "
+						+ "where re_ref=? and re_seq>?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, bb.getRe_ref());
+				pstmt.setInt(2, bb.getRe_seq());
+				pstmt.executeUpdate();
+				
+				/****답글 추가 동작****/
+				sql = "insert into hotel_board values(?,?,?,?,?,?,?,?,?,?,now(),?,?)";
+				
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, num); // 위에서 계산한 글번호
+				pstmt.setString(2, bb.getId());
+				pstmt.setString(3, bb.getName());
+				pstmt.setString(4, bb.getPasswd());
+				pstmt.setString(5, bb.getSubject());
+				pstmt.setString(6, bb.getContent());
+				pstmt.setInt(7, 0); 
+				pstmt.setInt(8, bb.getRe_ref()); // 원글의 그룹번호와 같은 값 
+				pstmt.setInt(9, bb.getRe_lev()+1); // 기존의 값 +1
+				pstmt.setInt(10, bb.getRe_seq()+1); // 기존의 값 +1
+				pstmt.setString(11, bb.getFile());
+				pstmt.setString(12, bb.getIp());
+				
+				// 실행
+				pstmt.executeUpdate();
+				System.out.println("답글 저장 완료!");
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("답글 처리중 예외 발생!");
+			}finally{
+				closeDB();
+			}
+			
+			
+		}//reWriteBoard(bb) : 답글 추가하기
 }
 
 
