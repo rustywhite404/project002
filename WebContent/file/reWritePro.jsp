@@ -16,8 +16,8 @@
 		request.setCharacterEncoding("UTF-8");
 		
 		// 파일이 저장되는 위치 지정(D:/upfile)
-		System.out.println("가상경로: "+request.getRealPath("/upload"));
- 		String uploadPath = request.getRealPath("/upload");
+		System.out.println("가상경로: "+ application.getRealPath("/upload"));
+ 		String uploadPath = application.getRealPath("/upload");
 		
 		//파일 업로드 가능한 최대 크기 5MB
 		int MaxSize = 5*1024*1024;
@@ -39,6 +39,10 @@
 		bb.setPasswd(multi.getParameter("passwd"));
 		bb.setSubject(multi.getParameter("subject"));
 		bb.setContent(multi.getParameter("content"));
+		bb.setBno(Integer.parseInt(multi.getParameter("bno")));
+		bb.setRe_lev(Integer.parseInt(multi.getParameter("re_lev")));
+		bb.setRe_seq(Integer.parseInt(multi.getParameter("re_seq")));
+		bb.setRe_ref(Integer.parseInt(multi.getParameter("re_ref")));
 		// 일반적인 데이터는 parameter로 되지만, 파일은 이 형태로 저장이 안됨
 		bb.setFile(multi.getFilesystemName("file")); // (o)
 		

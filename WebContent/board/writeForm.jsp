@@ -25,7 +25,7 @@
 				<div id="writeForm">
 				<h5>글쓰기</h5>		
 				
-					<form action="writePro.jsp" method="post"> 
+					<form action="writePro.jsp" method="post" enctype="multipart/form-data"> 
 						<table class="list">
 							<colgroup>
 								<!--  col width="110px"-->

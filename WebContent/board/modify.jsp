@@ -41,8 +41,8 @@
 								<!--  col width="110px"-->
 							</colgroup>
 								<tr>
-									<input type="hidden" name="bno" value="<%=bb.getBno()%>">
-									<th>작성자</th>
+									
+									<th>작성자<input type="hidden" name="bno" value="<%=bb.getBno()%>"></th>
 									<td><input type="text" name="name" value="<%=bb.getName()%>"></td>
 									<th>비밀번호</th>
 									<td><input type="password" name="passwd"></td>

@@ -110,7 +110,20 @@
 								<tbody>
 									<tr class="trContent">
 										<td><%= bb.getBno() %></td>
-										<td class="trSubject"><a href="content.jsp?bno=<%=bb.getBno()%>&pageNum=<%=pageNum%>"><%=bb.getSubject() %></a></td>
+										<td class="trSubject">
+										<%
+											if(bb.getRe_lev()> 0){ // 답변글일 경우 
+												for(int k = 0; k < bb.getRe_lev(); k++){
+										%>
+											&nbsp;&nbsp;
+										<%			
+												}
+										%>
+											⤷
+										<%	
+											} // if end
+										%>
+										<a href="content.jsp?bno=<%=bb.getBno()%>&pageNum=<%=pageNum%>"><%=bb.getSubject() %></a></td>
 										<!-- 페이지 넘길 때 글 고유번호와 페이지 넘버 같이 가져감.
 										페이지 넘버는 유저가 글을 수정하거나 새로 등록했을 때 현재페이지에 있도록 하기 위해 저장
 										 -->

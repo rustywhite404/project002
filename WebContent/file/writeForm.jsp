@@ -31,9 +31,9 @@
 								<!--  col width="110px"-->
 							</colgroup>
 								<tr>
-									<input type="hidden" name="id">
+									
 									<th>작성자</th>
-									<td><input type="text" name="name"></td>
+									<td><input type="text" name="name"><input type="hidden" name="id"></td>
 									<th>비밀번호</th>
 									<td><input type="password" name="passwd"></td>
 								</tr>

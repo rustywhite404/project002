@@ -1,5 +1,5 @@
+<%@page import="net.ivyro.zian.board.FileDAO"%>
 <%@page import="net.ivyro.zian.board.BoardBean"%>
-<%@page import="net.ivyro.zian.board.BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -22,11 +22,11 @@
 		
 			int bno =Integer.parseInt(request.getParameter("bno"));
 			String pageNum = request.getParameter("pageNum");
-
+			String file = request.getParameter("file");
 			//BoardDAO 객체 생성
-			BoardDAO bdao = new BoardDAO();
+			FileDAO fdao = new FileDAO();
 			// 글 불러오기 - getBoard(bno)만든 거 그대로 써도 될 것 같음
-			BoardBean bb = bdao.getBoard(bno);			
+			BoardBean bb = fdao.getBoard(bno);			
 			
 		%>
 		
@@ -35,15 +35,15 @@
 				<div id="writeForm">
 				<h5>글 수정하기</h5>		
 				
-					<form action="modifyPro.jsp?pageNum=<%=pageNum %>" method="post"> 
+					<form action="modifyPro.jsp?pageNum=<%=pageNum %>" method="post" enctype="multipart/form-data"> 
 						<table class="list">
 							<colgroup>
 								<!--  col width="110px"-->
 							</colgroup>
 								<tr>
-									<input type="hidden" name="bno" value="<%=bb.getBno()%>">
+									
 									<th>작성자</th>
-									<td><input type="text" name="name" value="<%=bb.getName()%>"></td>
+									<td><input type="text" name="name" value="<%=bb.getName()%>"><input type="hidden" name="bno" value="<%=bb.getBno()%>"></td>
 									<th>비밀번호</th>
 									<td><input type="password" name="passwd"></td>
 								</tr>
@@ -57,7 +57,7 @@
 								</tr>
 								<tr>
 									<th>첨부파일</th>
-									<td colspan="3"><input type="file" name="file" class="file_input" value="<%=bb.getFile()%>"></td>
+									<td colspan="3">원본 파일명 | <%=file%><input type="file" name="file" class="file_input" value="<%=bb.getFile()%>"></td>
 								</tr>
 
 						</table>
