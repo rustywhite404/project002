@@ -1,6 +1,6 @@
+<%@page import="net.ivyro.zian.board.FileDAO"%>
 <%@page import="net.ivyro.zian.board.BoardBean"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="net.ivyro.zian.board.BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -23,10 +23,10 @@
 	// 디비에서 전체 글 목록을 읽어서 가져오기
 	
 	// 1. BoardDAO 객체 생성
-	BoardDAO bdao = new BoardDAO();
+	FileDAO fdao = new FileDAO();
 		
 	// 2. 디비 테이블에 글이 있는지 없는지 판단(getBoardCount() 생성)
-	int cnt = bdao.getBoardCount();
+	int cnt = fdao.getBoardCount();
 	
 	System.out.println("테이블에 저장된 글 수:" + cnt);
 	
@@ -73,7 +73,7 @@
 		// boardList = bdao.getBoardList();	
 		// ㄴ 페이징 처리 안 하고 전체 출력
 		
-		boardList = bdao.getBoardList(startRow,pageSize);
+		boardList = fdao.getBoardList(startRow,pageSize);
 		// ㄴ페이징 처리 한 리스트 호출(시작행, 페이지 크기) 
 		// bdao에서 getBoardList(startRow, pageSize) 만들어야 쓸 수 있겠지
 	}
@@ -82,8 +82,8 @@
 		<section id="Content_container">
 			<div class="contentBox">
 				<div id="notice">
-				<h5>공지사항</h5>		
-				<h4>워커힐의 공지사항 및 새로운 소식을 알려드립니다.</h4>
+				<h5>자료게시판</h5>		
+				<h4>워커힐의 소식지 및 <br>고객 필요 자료들을 제공해드립니다.</h4>
 					<form> 
 						<table class="list">
 							<colgroup>
