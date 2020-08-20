@@ -22,7 +22,7 @@
 		
 			int bno =Integer.parseInt(request.getParameter("bno"));
 			String pageNum = request.getParameter("pageNum");
-
+			String file = request.getParameter("file");
 			//BoardDAO 객체 생성
 			BoardDAO bdao = new BoardDAO();
 			// 글 불러오기 - getBoard(bno)만든 거 그대로 써도 될 것 같음
@@ -35,7 +35,7 @@
 				<div id="writeForm">
 				<h5>글 수정하기</h5>		
 				
-					<form action="modifyPro.jsp?pageNum=<%=pageNum %>" method="post"> 
+					<form action="modifyPro.jsp?pageNum=<%=pageNum %>" method="post" enctype="multipart/form-data">  
 						<table class="list">
 							<colgroup>
 								<!--  col width="110px"-->
@@ -57,7 +57,7 @@
 								</tr>
 								<tr>
 									<th>첨부파일</th>
-									<td colspan="3"><input type="file" name="file" class="file_input" value="<%=bb.getFile()%>"></td>
+									<td colspan="3">원본 파일명 | <%=file%><input type="file" name="file" class="file_input" value="<%=bb.getFile()%>"></td>
 								</tr>
 
 						</table>
