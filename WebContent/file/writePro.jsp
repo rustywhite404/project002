@@ -57,6 +57,8 @@
 	
 	// 글쓰기 성공시 boardList로 이동
 	response.sendRedirect("boardList.jsp");
+	
+	
 
 	%>
 
