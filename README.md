@@ -90,3 +90,5 @@ CALL loopInsert;
 - 답글게시판 동작에서 re_ref 오류(수정해야함) -> 수정완료 
 - modify.jsp에서 form에 enctype="multipart/form-data"> 붙이면 수정 안 되는 문제 -> 처리완료 
 
+200824
+- 파일업로드 기능 구현 완료 

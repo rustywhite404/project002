@@ -63,7 +63,7 @@
 								</tr>
 								<tr>
 									<th>첨부파일</th>
-									<td colspan="3"><%=bb.getFile() %></td>
+									<td colspan="3"><a href="file_down.jsp?bno=<%=bno%>&file_name=<%=bb.getFile()%>"><%=bb.getFile() %> </a></td>
 								</tr>
 
 						</table>
