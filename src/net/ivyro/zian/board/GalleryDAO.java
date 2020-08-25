@@ -278,102 +278,51 @@ public class GalleryDAO {
 			
 			// deleteBoard() : 글 삭제하기
 			
-			//updateBoard(bb): 글 수정하기 ------------------------------ 여기부터 갤러리빈 재수정 필요 
-//			public int updateBoard(GalleryBean gb){
-//				int check = -1;
-//				try {
-//					con = getCon();
-//					sql ="select passwd from hotel_gallery where bno=?";
-//					pstmt = con.prepareStatement(sql);
-//					pstmt.setInt(1, gb.getBno());
-//					rs = pstmt.executeQuery();
-//					
-//					if(rs.next()){
-//						if(bb.getPasswd().equals(rs.getString("passwd"))){
-//							sql = "update hotel_gallery set name=?, subject=?, content=?, pic=?, thumnail=?, where bno=?";
-//							pstmt = con.prepareStatement(sql);
-//							pstmt.setString(1, bb.getName());
-//							pstmt.setString(2, bb.getSubject());
-//							pstmt.setString(3, bb.getContent());
-//							pstmt.setString(4, bb.getFile());
-//							pstmt.setInt(5, bb.getBno());
-//							
-//							pstmt.executeUpdate();
-//							check = 1;
-//						}else{
-//							System.out.println("비밀번호가 틀립니다.");
-//							check=0;
-//						}
-//						
-//					}else{
-//						System.out.println("에러:글이 없습니다!");
-//						check = -1;
-//					}
-//					
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//					System.out.println("글 수정 중 예외 발생!");
-//				}finally{
-//					closeDB();
-//				}
-//				return check;			
-//			}
-//			
-//			//updateBoard(bb): 글 수정하기
-//			
-//			//reWriteBoard(bb) : 답글 추가하기
-//			public void reWriteBoard(BoardBean bb){
-//				int num = 0;
-//				try {
-//					con = getCon();
-//					
-//					// select - 게시판 글번호 중 최대값 가져오기 & pstmt 
-//					sql = "select max(bno) from file_board";
-//					pstmt = con.prepareStatement(sql);
-//					rs = pstmt.executeQuery();
-//					
-//					if(rs.next())
-//						num = rs.getInt(1)+1; // max번호 + 1
-//					System.out.println("답글번호:"+num);
-//					
-//					/*****답글 순서 재배치*****/
-//					//re_ref(같은 그룹) 기준 re_seq값이 기존의 값보다 큰 게 있을 경우
-//					// re_seq 값을 1 증가
-//					sql = "update file_board set re_seq=re_seq+1 "
-//							+ "where re_ref=? and re_seq>?";
-//					pstmt = con.prepareStatement(sql);
-//					pstmt.setInt(1, bb.getRe_ref());
-//					pstmt.setInt(2, bb.getRe_seq());
-//					pstmt.executeUpdate();
-//					
-//					/****답글 추가 동작****/
-//					sql = "insert into file_board values(?,?,?,?,?,?,?,?,?,?,now(),?,?)";
-//					
-//					pstmt = con.prepareStatement(sql);
-//					pstmt.setInt(1, num); // 위에서 계산한 글번호
-//					pstmt.setString(2, bb.getId());
-//					pstmt.setString(3, bb.getName());
-//					pstmt.setString(4, bb.getPasswd());
-//					pstmt.setString(5, bb.getSubject());
-//					pstmt.setString(6, bb.getContent());
-//					pstmt.setInt(7, 0); 
-//					pstmt.setInt(8, bb.getRe_ref()); // 원글의 그룹번호와 같은 값 
-//					pstmt.setInt(9, bb.getRe_lev()+1); // 기존의 값 +1
-//					pstmt.setInt(10, bb.getRe_seq()+1); // 기존의 값 +1
-//					pstmt.setString(11, bb.getFile());
-//					pstmt.setString(12, bb.getIp());
-//					
-//					// 실행
-//					pstmt.executeUpdate();
-//					System.out.println("답글 저장 완료!");
-//					
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//					System.out.println("답글 처리중 예외 발생!");
-//				}finally{
-//					closeDB();
-//				}
-//				
-//				
-//			}//reWriteBoard(bb) : 답글 추가하기
+			//updateBoard(bb): 글 수정하기 
+			public int updateBoard(GalleryBean gb){
+				int check = -1;
+				try {
+					con = getCon();
+					sql ="select passwd from hotel_gallery where bno=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, gb.getBno());
+					rs = pstmt.executeQuery();
+					
+					if(rs.next()){
+						if(gb.getPasswd().equals(rs.getString("passwd"))){
+							sql = "update hotel_gallery set name=?, subject=?, content=?, period=?, category=?, thumnail=?, pic=?, where bno=?";
+							pstmt = con.prepareStatement(sql);
+							pstmt.setString(1, gb.getName());
+							pstmt.setString(2, gb.getSubject());
+							pstmt.setString(3, gb.getContent());
+							pstmt.setString(4, gb.getPeriod());
+							pstmt.setString(5, gb.getCategory());
+							pstmt.setString(6, gb.getThumnail());
+							pstmt.setString(7, gb.getPic());
+							pstmt.setInt(8, gb.getBno());
+							
+							pstmt.executeUpdate();
+							check = 1;
+						}else{
+							System.out.println("비밀번호가 틀립니다.");
+							check=0;
+						}
+						
+					}else{
+						System.out.println("에러:글이 없습니다!");
+						check = -1;
+					}
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+					System.out.println("글 수정 중 예외 발생!");
+				}finally{
+					closeDB();
+				}
+				return check;			
+			}
+			
+			//updateBoard(bb): 글 수정하기
+			
+			
 }

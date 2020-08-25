@@ -1,6 +1,7 @@
+<%@page import="net.ivyro.zian.board.GalleryBean"%>
+<%@page import="net.ivyro.zian.board.GalleryDAO"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
-<%@page import="net.ivyro.zian.board.FileDAO"%>
 <%@page import="org.apache.catalina.ha.backend.Sender"%>
 <%@page import="net.ivyro.zian.board.BoardBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -35,28 +36,30 @@
 		out.println("파일 업로드 완료!");
 		
 		// 처리 했으면 파일정보 + 글정보를 DB에 저장
-		BoardBean bb = new BoardBean();
-		bb.setName(multi.getParameter("name"));
-		bb.setPasswd(multi.getParameter("passwd"));
-		bb.setSubject(multi.getParameter("subject"));
-		bb.setContent(multi.getParameter("content"));
+		GalleryBean gb = new GalleryBean();
+		gb.setName(multi.getParameter("name"));
+		gb.setPasswd(multi.getParameter("passwd"));
+		gb.setSubject(multi.getParameter("subject"));
+		gb.setCategory(multi.getParameter("category"));
+		gb.setPeriod(multi.getParameter("period"));
+		gb.setContent(multi.getParameter("content"));
 		// 일반적인 데이터는 parameter로 되지만, 파일은 이 형태로 저장이 안됨
-		bb.setFile(multi.getFilesystemName("file")); // (o)
+		gb.setThumnail(multi.getFilesystemName("thumnail")); // (o)
+		gb.setPic(multi.getFilesystemName("pic")); // (o)
 		
 		// 전달된 파일 정보를 저장
 		
-		System.out.println("upfile에 저장된 이름: "+multi.getFilesystemName("file"));
-		System.out.println("사용자가 올린 원본 파일 이름: "+multi.getOriginalFileName("file"));
+		System.out.println("upfile에 저장된 이름: "+multi.getFilesystemName("pic"));
+		System.out.println("사용자가 올린 원본 파일 이름: "+multi.getOriginalFileName("pic"));
 		
-		bb.setIp(request.getRemoteAddr()); // 이건 전달되는 파라메터가 아니어도 쓸 수 있음.
 
 	//BoardDAO 객체 불러오기
-	FileDAO fdao = new FileDAO();
-	fdao.insertBoard(bb);
+	GalleryDAO gdao = new GalleryDAO();
+	gdao.insertBoard(gb);
 	// insertBoard(BoardBean bb) : 글쓰기 처리
 	
 	// 글쓰기 성공시 boardList로 이동
-	response.sendRedirect("boardList.jsp");
+	response.sendRedirect("eventList.jsp");
 	
 	
 

@@ -1,3 +1,4 @@
+<%@page import="net.ivyro.zian.board.GalleryDAO"%>
 <%@page import="net.ivyro.zian.board.BoardBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="net.ivyro.zian.board.BoardDAO"%>
@@ -23,10 +24,10 @@
 	// 디비에서 전체 글 목록을 읽어서 가져오기
 	
 	// 1. BoardDAO 객체 생성
-	BoardDAO bdao = new BoardDAO();
+	GalleryDAO gdao = new GalleryDAO();
 		
 	// 2. 디비 테이블에 글이 있는지 없는지 판단(getBoardCount() 생성)
-	int cnt = bdao.getBoardCount();
+	int cnt = gdao.getBoardCount();
 	
 	System.out.println("테이블에 저장된 글 수:" + cnt);
 	
@@ -73,7 +74,7 @@
 		// boardList = bdao.getBoardList();	
 		// ㄴ 페이징 처리 안 하고 전체 출력
 		
-		boardList = bdao.getBoardList(startRow,pageSize);
+		boardList = gdao.getBoardList(startRow,pageSize);
 		// ㄴ페이징 처리 한 리스트 호출(시작행, 페이지 크기) 
 		// bdao에서 getBoardList(startRow, pageSize) 만들어야 쓸 수 있겠지
 	}
@@ -194,21 +195,21 @@
 			// 내가 뒷 블럭에서 보고 있어야 이전 블럭으로 갈 수 있겠지?
 			if(startPage>pageBlock){
 				%>
-					<a href="boardList.jsp?pageNum=<%=startPage-pageBlock%>">◀ </a>
+					<a href="eventList.jsp?pageNum=<%=startPage-pageBlock%>">◀ </a>
 				<%
 			}
 			
 			// 숫자(1...10/11...20/21...30)
 			for(int i=startPage;i<=endPage;i++){
 				%>
-					<a href="boardList.jsp?pageNum=<%=i%>"><%= i %></a>
+					<a href="eventList.jsp?pageNum=<%=i%>"><%= i %></a>
 				<%
 			}
 			
 			// 다음(next)
 			if(endPage<pageCount){
 				%>
-				<a href="boardList.jsp?pageNum=<%=startPage+pageBlock%>"> ▶</a>
+				<a href="eventList.jsp?pageNum=<%=startPage+pageBlock%>"> ▶</a>
 				<%
 			}
 		}

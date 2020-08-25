@@ -67,7 +67,7 @@
 						</table>
 						<div class="btn_set"> 
 							<button type="button" class="list_btn" onclick="location.href='eventList.jsp'">취소</button>
-							<button type="submit" class="write_btn">등록</button>
+							<button type="submit" class="write_btn" onclick="location.href='eventPro.jsp'">등록</button>
 						</div>
 					</form>
 				</div>
