@@ -107,6 +107,23 @@
 #contentView .btn_set_r{width:300px; margin:0 auto; text-align:right; float:right;}
 #contentView .btn_set_l{width:98px; float:left;}
 
+
+/* eventList.jsp */
+#tapBox ul li{float:left; font-size:16px; font-weight:400; color:#999;margin-right:24px;}
+#countBox ul li{float:right; font-size:16px; font-weight:400; color:#999; margin-right:24px;}
+#eventBox{margin:40px 0 60px 0; width:100%;}
+#eventBox ul li{float:left; width:33.333%; margin-bottom:30px; padding-right:30px;}
+#eventBox ul li .event_subject{color:#333; margin:10px 0 0 0;}
+#eventBox ul li .event_context{color:#999; padding:0 0 8px 0;}
+#eventBox ul li .event_period{font-size:13px; color:#bbb;}
+
+#gallery {margin:0 auto 40px auto; position:relative; width:100%;}
+#gallery button {width:96px; height:38px; margin-top:10px; padding:0 25px; font-size:14px; background:#9c836a; color:#fff; border:1px solid #9c836a; cursor:pointer;}
+#gallery .write_btn{float:right;}
+.gallery_thum{width:100%;}
+.gallery_thum img{width:100%;}
+
+
 .pd10{padding:10px;}
 .pd20{padding:20px;}
 .pd30{padding:30px;}

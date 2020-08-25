@@ -67,7 +67,7 @@
 				<li><a href="">Membership</a>
 					<ul class="mainDropdown">
 						<li><a href="">공지사항</a></li>
-						<li><a href="">Photo Review</a></li>
+						<li><a href="../gallery/eventList.jsp">Event</a></li>
 						<li><a href="../file/boardList.jsp">Download</a></li>
 					</ul>
 				</li>
