@@ -19,6 +19,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&family=Roboto:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
 <link href="../css/reset.css" rel="stylesheet" type="text/css">
 <link href="../css/style.css" rel="stylesheet" type="text/css">
+
 <title>Hotel | Personal Project</title>
 </head>
 <body>
@@ -78,7 +79,7 @@
 									<td colspan="3"><%= gb.getSubject() %></td>
 								</tr>
 								<tr>
-									<th colspan="4" class="content">
+									<th colspan="4" class="c_content">
 									<div class="pd30">
 											<img src="../image/<%=gb.getPic() %>"><br>
 									<%= gb.getContent() %>

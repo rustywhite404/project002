@@ -12,6 +12,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&family=Roboto:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
 <link href="../css/reset.css" rel="stylesheet" type="text/css">
 <link href="../css/style.css" rel="stylesheet" type="text/css">
+<link href="../css/demo.css" rel="stylesheet" type="text/css">
+<script src="../js/ScrollTrigger.min.js"></script>
 <title>Hotel | Personal Project</title>
 </head>
 <body>
@@ -111,29 +113,43 @@
 								%>
 								<li>
 									<a href="eventContent.jsp?bno=<%=gb.getBno()%>&pageNum=<%=pageNum%>">
-									<div class="gallery_thum actionImg3">	
-										<%
-											if(gb.getThumnail()==null){
-										%>
-												<img src="../image/mamel.png"><br>
-										<%
-											}else{
-										%>	
-										<img src="../image/<%=gb.getThumnail() %>">	
-										<div class="hover">
-										<div class="line1"></div>
-										<div class="line2"></div>
-										<div class="sub_tit">
-											VIEW EVENT
-										</div>
-										</div>
-										<%
-										}
-										%>					
+
+										<div class="block">
+											<div data-scroll="toggle(.fromBottomIn, .fromBottomOut)">
+											<div class="gallery_thum actionImg3">	
+												<%
+													if(gb.getThumnail()==null){
+												%>
+														<img src="../image/noImage.jpg">
+														<div class="hover">
+														<div class="line1"></div>
+														<div class="line2"></div>
+														<div class="sub_tit">
+															View Event
+														</div>
+													</div>
+												<%
+													}else{
+												%>	
+												<img src="../image/<%=gb.getThumnail() %>">	
+												<div class="hover">
+													<div class="line1"></div>
+													<div class="line2"></div>
+													<div class="sub_tit">
+														View Event
+													</div>
+												</div>
+												<%
+												}
+												%>					
+											</div>
+										
+										<h5 class="event_subject"><%=gb.getSubject()%></h5>
+										<p class="event_context"><%=gb.getContent() %></p>
+										<p class="event_period"><%=gb.getPeriod() %></p>
 									</div>
-									<h5 class="event_subject"><%=gb.getSubject()%></h5>
-									<p class="event_context"><%=gb.getContent() %></p>
-									<p class="event_period"><%=gb.getPeriod() %></p>
+									</div>
+									
 									</a>
 								</li>
 								<%
@@ -141,8 +157,6 @@
 									}
 								%>
 							</ul>
-							
-							
 							
 							<div class="clear"></div>
 						</div> 
@@ -215,5 +229,22 @@
 	<!-- 푸터영역 -->
 		<jsp:include page="../include/footer.jsp"/>
 	<!-- 푸터영역 -->
+
+<script>
+window.counter = function() {
+	// this refers to the html element with the data-scroll-showCallback tag
+	var span = this.querySelector('span');
+	var current = parseInt(span.textContent);
+
+	span.textContent = current + 1;
+};
+
+document.addEventListener('DOMContentLoaded', function(){
+  var trigger = new ScrollTrigger({
+	  addHeight: true
+  });
+});
+</script>
+
 </body>
 </html>
