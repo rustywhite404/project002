@@ -1,5 +1,15 @@
-<%@page import="net.ivyro.zian.board.FileDAO"%>
-<%@page import="net.ivyro.zian.board.BoardBean"%>
+<%@page import="net.ivyro.zian.board.GalleryBean"%>
+<%@page import="net.ivyro.zian.board.GalleryDAO"%>
+<%@page import="javax.imageio.ImageIO"%>
+<%@page import="java.io.File"%>
+<%@page import="java.awt.Graphics2D"%>
+<%@page import="java.awt.image.BufferedImage"%>
+<%@page import="javax.media.jai.RenderedOp"%>
+<%@page import="java.awt.image.renderable.ParameterBlock"%>
+<%@page import="javax.media.jai.JAI"%>
+<%@page import="java.util.Enumeration"%>
+<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -26,15 +36,17 @@
 			String pageNum = request.getParameter("pageNum");
 			
 			// File 객체 생성
-			FileDAO fdao = new FileDAO();
+			GalleryDAO gdao = new GalleryDAO();
 			
 			// 글 조회수를 1 증가 시키기(updateReadCount(bno))
-			fdao.updateReadCount(bno);
+			gdao.updateReadCount(bno);
 			
 			// 글 정보 가져오기(getBoard(bno))
 			// 글 번호에 해당하는 글 정보여야 하니까 글번호 받아가야함 
-			BoardBean bb = fdao.getBoard(bno);
+			GalleryBean gb = gdao.getBoard(bno);
+
 			
+
 		%>
 		
 		<section id="Content_container">
@@ -48,33 +60,42 @@
 								<!--  col width="110px"-->
 							</colgroup>
 								<tr>
-									<th>글번호</th>
-									<td><%= bb.getBno() %></td>
+									<th>분류</th>
+									<td><%
+									if(gb.getCategory().equals("ing")){
+										out.print("진행중");
+									}else if(gb.getCategory()=="end"){
+										out.print("종료된이벤트");
+									}else{
+										out.print("진행예정");
+									}
+									%></td>
 									<th>작성자</th>
-									<td><%= bb.getName() %></td>
+									<td><%= gb.getName() %></td>
 								</tr>
 								<tr>
 									<th>제목</th>
-									<td colspan="3"><%= bb.getSubject() %></td>
+									<td colspan="3"><%= gb.getSubject() %></td>
 								</tr>
 								<tr>
-									<th>내용</th>
-									<td colspan="3" class="content"><div class="pd30"><%= bb.getContent() %></div></td>
+									<th colspan="4" class="content">
+									<div class="pd30">
+											<img src="../image/<%=gb.getPic() %>"><br>
+									<%= gb.getContent() %>
+									</div></td>
 								</tr>
 								<tr>
-									<th>첨부파일</th>
-									<td colspan="3"><a href="file_down.jsp?bno=<%=bno%>&file_name=<%=bb.getFile()%>"><%=bb.getFile() %> </a></td>
+									<th>기간</th>
+									<td colspan="3"><%=gb.getPeriod() %></td>
 								</tr>
 
 						</table>
 						<div class="btn_set_l">
-						<button type="button" class="write_btn" onclick="location.href='boardList.jsp?pageNum=<%=pageNum%>'">목록</button>
+						<button type="button" class="write_btn" onclick="location.href='eventList.jsp?pageNum=<%=pageNum%>'">목록</button>
 						</div>
 						<div class="btn_set_r">
-		
-							<button type="button" class="write_btn" onclick="location.href='reWriteForm.jsp?bno=<%=bb.getBno()%>&re_ref=<%=bb.getRe_ref()%>&re_lev=<%=bb.getRe_lev()%>&re_seq=<%=bb.getRe_seq()%>'">답글</button>
-							<button type="button" class="list_btn" onclick="location.href='modify.jsp?bno=<%=bb.getBno()%>&pageNum=<%=pageNum%>&file=<%=bb.getFile()%>'">수정</button>
-							<button type="button" class="list_btn" onclick="location.href='delete.jsp?bno=<%=bb.getBno()%>&pageNum=<%=pageNum%>'">삭제</button>
+							<button type="button" class="list_btn" onclick="location.href='eventModify.jsp?bno=<%=gb.getBno()%>&pageNum=<%=pageNum%>&file=<%=gb.getPic()%>&thum=<%=gb.getThumnail()%>'">수정</button>
+							<button type="button" class="list_btn" onclick="location.href='eventDelete.jsp?bno=<%=gb.getBno()%>&pageNum=<%=pageNum%>&file=<%=gb.getPic()%>&thum=<%=gb.getThumnail()%>'">삭제</button>
 						</div>
 						<div class="clear"></div>
 					</form>

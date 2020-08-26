@@ -1,3 +1,4 @@
+<%@page import="net.ivyro.zian.board.GalleryBean"%>
 <%@page import="net.ivyro.zian.board.GalleryDAO"%>
 <%@page import="net.ivyro.zian.board.BoardBean"%>
 <%@page import="java.util.ArrayList"%>
@@ -102,54 +103,43 @@
 						<div class="clear"></div>
 						<div id="eventBox">
 							<ul>
+								<% 
+									if(cnt!=0){ // 글이 0이 아닐 경우 이 부분 불러오고, 글이 0일 경우 안 뜨도록 
+										for(int i=0;i<boardList.size();i++){
+											GalleryBean gb = (GalleryBean)boardList.get(i);
+											//ArrayList에서 가져온 한 칸의 정보 -> BoardBean 객체 하나로 이동
+								%>
 								<li>
-									<div class="gallery_thum">									
-										<img src="../img/sub/event1_th.jpg" alt="이벤트1"/>
+									<a href="eventContent.jsp?bno=<%=gb.getBno()%>&pageNum=<%=pageNum%>">
+									<div class="gallery_thum actionImg3">	
+										<%
+											if(gb.getThumnail()==null){
+										%>
+												<img src="../image/mamel.png"><br>
+										<%
+											}else{
+										%>	
+										<img src="../image/<%=gb.getThumnail() %>">	
+										<div class="hover">
+										<div class="line1"></div>
+										<div class="line2"></div>
+										<div class="sub_tit">
+											VIEW EVENT
+										</div>
+										</div>
+										<%
+										}
+										%>					
 									</div>
-									<h5 class="event_subject">SUMMER HEALING GARDEN</h5>
-									<p class="event_context">올 여름 푸른 바다와 싱그러운 녹음이 함께 하는 치휴의 공간, 썸머 힐링 가든을 만나보세요.</p>
-									<p class="event_period">2020.07.18~2020.08.25</p>
+									<h5 class="event_subject"><%=gb.getSubject()%></h5>
+									<p class="event_context"><%=gb.getContent() %></p>
+									<p class="event_period"><%=gb.getPeriod() %></p>
+									</a>
 								</li>
-								<li>
-									<div class="gallery_thum">									
-										<img src="../img/sub/event1_th.jpg" alt="이벤트1"/>
-									</div>
-									<h5 class="event_subject">SUMMER HEALING GARDEN</h5>
-									<p class="event_context">올 여름 푸른 바다와 싱그러운 녹음이 함께 하는 치휴의 공간, 썸머 힐링 가든을 만나보세요.</p>
-									<p class="event_period">2020.07.18~2020.08.25</p>
-								</li>
-								<li>
-									<div class="gallery_thum">								
-										<img src="../img/sub/event1_th.jpg" alt="이벤트1"/>
-									</div>
-									<h5 class="event_subject">SUMMER HEALING GARDEN</h5>
-									<p class="event_context">올 여름 푸른 바다와 싱그러운 녹음이 함께 하는 치휴의 공간, 썸머 힐링 가든을 만나보세요.</p>
-									<p class="event_period">2020.07.18~2020.08.25</p>
-								</li>
-								<li>
-									<div class="gallery_thum">								
-										<img src="../img/sub/event1_th.jpg" alt="이벤트1"/>
-									</div>
-									<h5 class="event_subject">SUMMER HEALING GARDEN</h5>
-									<p class="event_context">올 여름 푸른 바다와 싱그러운 녹음이 함께 하는 치휴의 공간, 썸머 힐링 가든을 만나보세요.</p>
-									<p class="event_period">2020.07.18~2020.08.25</p>
-								</li>
-								<li>
-									<div class="gallery_thum">									
-										<img src="../img/sub/event1_th.jpg" alt="이벤트1"/>
-									</div>
-									<h5 class="event_subject">SUMMER HEALING GARDEN</h5>
-									<p class="event_context">올 여름 푸른 바다와 싱그러운 녹음이 함께 하는 치휴의 공간, 썸머 힐링 가든을 만나보세요.</p>
-									<p class="event_period">2020.07.18~2020.08.25</p>
-								</li>
-								<li>
-									<div class="gallery_thum">									
-										<img src="../img/sub/event1_th.jpg" alt="이벤트1"/>
-									</div>
-									<h5 class="event_subject">SUMMER HEALING GARDEN</h5>
-									<p class="event_context">올 여름 푸른 바다와 싱그러운 녹음이 함께 하는 치휴의 공간, 썸머 힐링 가든을 만나보세요.</p>
-									<p class="event_period">2020.07.18~2020.08.25</p>
-								</li>
+								<%
+										}
+									}
+								%>
 							</ul>
 							
 							

@@ -18,8 +18,8 @@
 		request.setCharacterEncoding("UTF-8");
 		
 		// 파일이 저장되는 위치 지정(D:/upfile)
-		System.out.println("가상경로: "+request.getRealPath("/upload"));
- 		String uploadPath = request.getRealPath("/upload");
+		System.out.println("가상경로: "+request.getRealPath("/image"));
+ 		String uploadPath = request.getRealPath("/image");
 		
 		//파일 업로드 가능한 최대 크기 5MB
 		int MaxSize = 5*1024*1024;
@@ -49,7 +49,7 @@
 		
 		// 전달된 파일 정보를 저장
 		
-		System.out.println("upfile에 저장된 이름: "+multi.getFilesystemName("pic"));
+		System.out.println("image에 저장된 이름: "+multi.getFilesystemName("pic"));
 		System.out.println("사용자가 올린 원본 파일 이름: "+multi.getOriginalFileName("pic"));
 		
 

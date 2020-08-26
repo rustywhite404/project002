@@ -142,9 +142,9 @@ public class GalleryDAO {
 					// sql = "select * from file_board";
 					// 이렇게 하면 순서대로 출력됨. 
 					
-					sql="select * from hotel_gallery order by re_ref desc";
+					sql="select * from hotel_gallery order by bno desc";
 					// 게시판 목록 중에서 10개씩 가져오기
-					// 정렬 - re_ref(그룹번호)를 내림차순으로, 
+					// 정렬 - asc(그룹번호)를 오름차순으로, 
 										
 					pstmt = con.prepareStatement(sql);
 					rs = pstmt.executeQuery();
@@ -214,6 +214,7 @@ public class GalleryDAO {
 					rs = pstmt.executeQuery();
 					
 					if(rs.next()){
+						gb = new GalleryBean();
 						gb.setBno(rs.getInt("bno"));
 						gb.setCategory(rs.getString("category"));
 						gb.setContent(rs.getString("content"));
@@ -287,10 +288,9 @@ public class GalleryDAO {
 					pstmt = con.prepareStatement(sql);
 					pstmt.setInt(1, gb.getBno());
 					rs = pstmt.executeQuery();
-					
 					if(rs.next()){
 						if(gb.getPasswd().equals(rs.getString("passwd"))){
-							sql = "update hotel_gallery set name=?, subject=?, content=?, period=?, category=?, thumnail=?, pic=?, where bno=?";
+							sql = "update hotel_gallery set name=?, subject=?, content=?, period=?, category=?, thumnail=?, pic=? where bno=?";
 							pstmt = con.prepareStatement(sql);
 							pstmt.setString(1, gb.getName());
 							pstmt.setString(2, gb.getSubject());
@@ -300,9 +300,9 @@ public class GalleryDAO {
 							pstmt.setString(6, gb.getThumnail());
 							pstmt.setString(7, gb.getPic());
 							pstmt.setInt(8, gb.getBno());
-							
 							pstmt.executeUpdate();
 							check = 1;
+							System.out.println(gb);
 						}else{
 							System.out.println("비밀번호가 틀립니다.");
 							check=0;
