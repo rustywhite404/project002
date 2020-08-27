@@ -35,6 +35,10 @@
 			// 글 번호에 해당하는 글 정보여야 하니까 글번호 받아가야함 
 			BoardBean bb = fdao.getBoard(bno);
 			
+			// textarea에 엔터 띄어쓰기 처리하기 
+			String contents= bb.getContent();
+			contents=contents.replace("\r\n","<br>"); 
+			
 		%>
 		
 		<section id="Content_container">
@@ -59,7 +63,7 @@
 								</tr>
 								<tr>
 									<th>내용</th>
-									<td colspan="3" class="content"><div class="pd30"><%= bb.getContent() %></div></td>
+									<td colspan="3" class="content"><div class="pd30"><%= contents %></div></td>
 								</tr>
 								<tr>
 									<th>첨부파일</th>

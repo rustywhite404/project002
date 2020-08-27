@@ -1,3 +1,5 @@
+
+<%@page import="java.util.regex.Pattern"%>
 <%@page import="net.ivyro.zian.board.GalleryBean"%>
 <%@page import="net.ivyro.zian.board.GalleryDAO"%>
 <%@page import="net.ivyro.zian.board.BoardBean"%>
@@ -5,6 +7,8 @@
 <%@page import="net.ivyro.zian.board.BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -25,7 +29,7 @@
 	<!-- 본문영역 -->
 		<%
 	// 디비에서 전체 글 목록을 읽어서 가져오기
-	
+	request.setCharacterEncoding("UTF-8");
 	// 1. BoardDAO 객체 생성
 	GalleryDAO gdao = new GalleryDAO();
 		
@@ -35,7 +39,8 @@
 	System.out.println("테이블에 저장된 글 수:" + cnt);
 	
 	
-	// 페이징처리**************************************
+	
+	// 페이징처리************************************** 
 	// 페이징 처리는 다양한 로직이 알려져 있다.
 	// 여기서 쓰는 건 일반적으로 많이 쓰는 로직이다.
 	// 페이징처리란? : 한 페이지에서 보여줄 글의 개수를 설정하는 것
@@ -110,6 +115,12 @@
 										for(int i=0;i<boardList.size();i++){
 											GalleryBean gb = (GalleryBean)boardList.get(i);
 											//ArrayList에서 가져온 한 칸의 정보 -> BoardBean 객체 하나로 이동
+											
+											// 리스트에서 컨텐츠 불러올 때 태그 제외하고 불러오도록 처리 + 글자수 60자까지만 불러옴
+											String preText = gb.getContent();
+											String p = "/(<([^>]+)>)/ig";
+											String convertText = preText.replace(p, "");
+
 								%>
 								<li>
 									<a href="eventContent.jsp?bno=<%=gb.getBno()%>&pageNum=<%=pageNum%>">
@@ -145,7 +156,19 @@
 											</div>
 										
 										<h5 class="event_subject"><%=gb.getSubject()%></h5>
-										<p class="event_context"><%=gb.getContent() %></p>
+										<p class="event_context">
+											
+											<c:set var="TextValue" value="<%=convertText %>"/>								         
+									        <c:choose>		        
+									        <c:when test="${fn:length(TextValue) > 60}">			   
+									      	  <c:out value='${fn:substring(TextValue.replaceAll("\\\<.*?\\\>",""),0, 59)}' />...
+									        </c:when>
+									        <c:otherwise>
+									       <c:out value='${TextValue.replaceAll("\\\<.*?\\\>","")}' />
+									        </c:otherwise>								        
+									        
+											</c:choose>
+										</p>
 										<p class="event_period"><%=gb.getPeriod() %></p>
 									</div>
 									</div>
@@ -206,10 +229,21 @@
 			// 숫자(1...10/11...20/21...30)
 			for(int i=startPage;i<=endPage;i++){
 				%>
-					<a href="eventList.jsp?pageNum=<%=i%>"><%= i %></a>
+					<a href="eventList.jsp?pageNum=<%=i%>">
+					<% 
+					if(i==Integer.parseInt(pageNum)){
+					%>
+						<font color="#990000"><%= i %></font>
+					<% 
+					}else{
+					%>
+						<%= i %>
+					<% 
+					}
+					%>
+					</a>
 				<%
 			}
-			
 			// 다음(next)
 			if(endPage<pageCount){
 				%>

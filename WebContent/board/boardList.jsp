@@ -184,11 +184,22 @@
 			
 			// 숫자(1...10/11...20/21...30)
 			for(int i=startPage;i<=endPage;i++){
-				%>
-					<a href="boardList.jsp?pageNum=<%=i%>"><%= i %></a>
+					%>
+					<a href="boardList.jsp?pageNum=<%=i%>">
+					<% 
+					if(i==Integer.parseInt(pageNum)){
+					%>
+						<font color="#990000"><%= i %></font>
+					<% 
+					}else{
+					%>
+						<%= i %>
+					<% 
+					}
+					%>
+					</a>
 				<%
 			}
-			
 			// 다음(next)
 			if(endPage<pageCount){
 				%>

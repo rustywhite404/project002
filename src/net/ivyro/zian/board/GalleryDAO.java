@@ -324,5 +324,9 @@ public class GalleryDAO {
 			
 			//updateBoard(bb): 글 수정하기
 			
+			// jstl로 태그 제거하는 정규식 
+			public String removeTag(String html) throws Exception {
+				return html.replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", "");
+			}
 			
 }
