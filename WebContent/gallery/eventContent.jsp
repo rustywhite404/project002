@@ -65,8 +65,8 @@
 									<td><%
 									if(gb.getCategory().equals("ing")){
 										out.print("진행중");
-									}else if(gb.getCategory()=="end"){
-										out.print("종료된이벤트");
+									}else if(gb.getCategory().equals("end")){
+										out.print("종료된 이벤트");
 									}else{
 										out.print("진행예정");
 									}

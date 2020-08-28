@@ -131,7 +131,6 @@ public class GalleryDAO {
 			//getBoardCount(): 게시판 글 갯수를 리턴
 			
 			
-			
 			//getBoardList(startRow, pageSize) : 페이징 처리 된 글 모두 가져오기
 			public ArrayList getBoardList(int startRow, int pageSize){
 				ArrayList boardList = new ArrayList();
@@ -141,13 +140,19 @@ public class GalleryDAO {
 					con = getCon();
 					// sql = "select * from file_board";
 					// 이렇게 하면 순서대로 출력됨. 
-					
-					sql="select * from hotel_gallery order by bno desc";
-					// 게시판 목록 중에서 10개씩 가져오기
-					// 정렬 - asc(그룹번호)를 오름차순으로, 
 										
+					sql="select * from hotel_gallery order by bno desc limit ?,?";
+
 					pstmt = con.prepareStatement(sql);
+					// ? 채우기
+					pstmt.setInt(1, startRow-1);
+					pstmt.setInt(2, pageSize);
 					rs = pstmt.executeQuery();
+					// 게시판 목록 중에서 10개씩 가져오기
+					// 정렬 - asc(그룹번호)를 오름차순으로
+					// 데이터 잘라서 가져오기 : limit 시작행 -1, 가져올 갯수
+					// => 해당 위치부터 갯수만큼 가져오기
+					
 					
 					// 데이터처리(검색된 모든 정보를 저장해서 이동)
 					while(rs.next()){
@@ -183,6 +188,71 @@ public class GalleryDAO {
 				
 				return boardList;
 			}//getBoardList(startRow, pageSize) : 페이징 처리 된 글 모두 가져오기
+			
+			
+			//getBoardList(startRow, pageSize, category) : 페이징 처리 된 글 모두 가져오기(카테고리)
+			public ArrayList getBoardList(int startRow, int pageSize, String category){
+				ArrayList boardList = new ArrayList();
+				// 데이터가 들어갈 배열 생성
+				
+				try {
+					con = getCon();
+					// sql = "select * from file_board";
+					// 이렇게 하면 순서대로 출력됨. 
+					
+					if(category.equals("pre")){
+						sql="select * from hotel_gallery where category='pre' order by bno desc limit ?,?";
+					}else if(category.equals("ing")){
+						sql="select * from hotel_gallery where category='ing' order by bno desc limit ?,?";
+					}else if(category.equals("end")){
+						sql="select * from hotel_gallery where category='end' order by bno desc limit ?,?";	
+					}					
+					// sql="select * from hotel_gallery order by bno desc limit ?,?";
+					pstmt = con.prepareStatement(sql);
+					// ? 채우기
+					pstmt.setInt(1, startRow-1);
+					pstmt.setInt(2, pageSize);
+					rs = pstmt.executeQuery();
+					// 게시판 목록 중에서 10개씩 가져오기
+					// 정렬 - asc(그룹번호)를 오름차순으로
+					// 데이터 잘라서 가져오기 : limit 시작행 -1, 가져올 갯수
+					// => 해당 위치부터 갯수만큼 가져오기
+					
+					
+					// 데이터처리(검색된 모든 정보를 저장해서 이동)
+					while(rs.next()){
+						// DB 테이블 결과 1명(1행의 정보) 모두를 BoardBean 형태로 저장
+						// 배열 한 칸에 저장(ArrayList) 사용
+						GalleryBean gb = new GalleryBean();
+										
+						
+						gb.setBno(rs.getInt("bno"));
+						gb.setCategory(rs.getString("category"));
+						gb.setContent(rs.getString("content"));
+						gb.setDate(rs.getDate("date"));
+						gb.setId(rs.getString("id"));
+						gb.setName(rs.getString("name"));
+						gb.setPasswd(rs.getString("passwd"));
+						gb.setPeriod(rs.getString("period"));
+						gb.setPic(rs.getString("pic"));
+						gb.setRe_ref(rs.getInt("re_ref"));
+						gb.setThumnail(rs.getString("thumnail"));
+						gb.setReadcount(rs.getInt("readcount"));
+						gb.setSubject(rs.getString("subject"));
+						
+						// 글 하나의 정보를 arrayList 한 칸에 저장
+						boardList.add(gb);
+					}
+					System.out.println("글 정보 저장 완료!");
+				} catch (Exception e) {
+					e.printStackTrace();
+					System.out.println("리스트 출력 중 예외 발생!");
+				}finally{
+					closeDB();
+				}
+				
+				return boardList;
+			}//getBoardList(startRow, pageSize, category) : 페이징 처리 된 글 모두 가져오기(카테고리)
 			
 			//updateReadCount(bno) : 글 조회수 증가 처리
 			public void updateReadCount(int bno){

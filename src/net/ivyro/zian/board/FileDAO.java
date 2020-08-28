@@ -190,6 +190,8 @@ public class FileDAO {
 			return boardList;
 		}//getBoardList(startRow, pageSize) : 페이징 처리 된 글 모두 가져오기
 		
+		
+		
 		//updateReadCount(bno) : 글 조회수 증가 처리
 		public void updateReadCount(int bno){
 			
