@@ -119,6 +119,11 @@
 #eventBox ul li .event_context{color:#999; padding:0 0 8px 0; min-height:52px;}
 #eventBox ul li .event_period{font-size:13px; color:#bbb;}
 
+
+/* eventContent.jsp */
+.img100 img{max-width:835px;}
+
+
 #gallery {margin:0 auto 40px auto; position:relative; width:100%;}
 #gallery button {width:96px; height:38px; margin-top:10px; padding:0 25px; font-size:14px; background:#9c836a; color:#fff; border:1px solid #9c836a; cursor:pointer;}
 #gallery .write_btn{float:right;}

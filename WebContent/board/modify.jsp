@@ -22,7 +22,6 @@
 		
 			int bno =Integer.parseInt(request.getParameter("bno"));
 			String pageNum = request.getParameter("pageNum");
-			String file = request.getParameter("file");
 			//BoardDAO 객체 생성
 			BoardDAO bdao = new BoardDAO();
 			// 글 불러오기 - getBoard(bno)만든 거 그대로 써도 될 것 같음
@@ -57,7 +56,7 @@
 								</tr>
 								<tr>
 									<th>첨부파일</th>
-									<td colspan="3">원본 파일명 | <%=file%><input type="file" name="file" class="file_input" value="<%=bb.getFile()%>"></td>
+									<td colspan="3">원본 파일명 | <%=bb.getFile()%><input type="file" name="file" class="file_input" value="<%=bb.getFile()%>"></td>
 								</tr>
 
 						</table>

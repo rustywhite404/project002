@@ -1,3 +1,5 @@
+<%@page import="javax.swing.ImageIcon"%>
+<%@page import="java.awt.Image"%>
 <%@page import="net.ivyro.zian.board.GalleryBean"%>
 <%@page import="net.ivyro.zian.board.GalleryDAO"%>
 <%@page import="javax.imageio.ImageIO"%>
@@ -53,7 +55,7 @@
 		<section id="Content_container">
 			<div class="contentBox">
 				<div id="contentView">
-				<h5>공지사항</h5>		
+				<h5>이벤트</h5>		
 				
 					<form> 
 						<table class="list">
@@ -62,7 +64,8 @@
 							</colgroup>
 								<tr>
 									<th>분류</th>
-									<td><%
+									<td>
+									<%
 									if(gb.getCategory().equals("ing")){
 										out.print("진행중");
 									}else if(gb.getCategory().equals("end")){
@@ -70,7 +73,8 @@
 									}else{
 										out.print("진행예정");
 									}
-									%></td>
+									%>
+									</td>
 									<th>작성자</th>
 									<td><%= gb.getName() %></td>
 								</tr>
@@ -80,9 +84,17 @@
 								</tr>
 								<tr>
 									<th colspan="4" class="c_content">
-									<div class="pd30">
+									<div class="pd30 img100">
+									<%
+										if(gb.getPic()!=null){
+											%>
 											<img src="../image/<%=gb.getPic() %>"><br>
+											<%
+										}
+									%>
 									<%= gb.getContent() %>
+									<input type="hidden" name="file" value="<%=gb.getPic()%>">
+									<input type="hidden" name="thum" value="<%=gb.getThumnail()%>">
 									</div></td>
 								</tr>
 								<tr>
@@ -95,8 +107,8 @@
 						<button type="button" class="write_btn" onclick="location.href='eventList.jsp?pageNum=<%=pageNum%>'">목록</button>
 						</div>
 						<div class="btn_set_r">
-							<button type="button" class="list_btn" onclick="location.href='eventModify.jsp?bno=<%=gb.getBno()%>&pageNum=<%=pageNum%>&file=<%=gb.getPic()%>&thum=<%=gb.getThumnail()%>'">수정</button>
-							<button type="button" class="list_btn" onclick="location.href='eventDelete.jsp?bno=<%=gb.getBno()%>&pageNum=<%=pageNum%>&file=<%=gb.getPic()%>&thum=<%=gb.getThumnail()%>'">삭제</button>
+							<button type="button" class="list_btn" onclick="location.href='eventModify.jsp?bno=<%=gb.getBno()%>&pageNum=<%=pageNum%>'">수정</button>
+							<button type="button" class="list_btn" onclick="location.href='eventDelete.jsp?bno=<%=gb.getBno()%>&pageNum=<%=pageNum%>'">삭제</button>
 						</div>
 						<div class="clear"></div>
 					</form>

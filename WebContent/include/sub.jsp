@@ -14,22 +14,23 @@
 	<%
 		
 		Random random = new Random();
-		int r_num = random.nextInt(5)+1;
+		int r_num = random.nextInt(6)+1;
 		System.out.println("이번 숫자:"+r_num);
 		
 		// sub페이지 타이틀, 소타이틀
-		String locationTitle = request.getRequestURI(); // 프로젝트 경로 가져오기
-		System.out.println("현재 경로:"+locationTitle);
-		SubDAO sdao = new SubDAO();
-		sdao.InsertTitle(locationTitle);
+		String location = request.getRequestURI(); // 프로젝트 경로 가져오기
 		
+		System.out.println("현재 경로:"+location);
+		SubDAO sdao = new SubDAO();
+		String title = sdao.InsertTitle(location);
+		String context = sdao.InsertContext(location);
 	%>
 	
 	<section id="sub_section">
 		<div class="sub_bg<%=r_num%>">
 			<div class="sub_location">
-				<h3>내용</h3>
-				<p>내용2</p>
+				<h3><%=title %></h3>
+				<p><%=context %></p>
 			</div>
 		</div>
 	</section>

@@ -57,7 +57,7 @@
 								</tr>
 								<tr>
 									<th>첨부파일</th>
-									<td colspan="3">원본 파일명 | <%=file%><input type="file" name="file" class="file_input" value="<%=bb.getFile()%>"></td>
+									<td colspan="3">원본 파일명 | <%=bb.getFile()%><input type="file" name="file" class="file_input" value="<%=bb.getFile()%>"></td>
 								</tr>
 
 						</table>

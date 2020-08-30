@@ -67,7 +67,9 @@
 								</tr>
 								<tr>
 									<th>첨부파일</th>
-									<td colspan="3"><a href="file_down.jsp?bno=<%=bno%>&file_name=<%=bb.getFile()%>"><%=bb.getFile() %> </a></td>
+									<td colspan="3">
+									<input type="hidden" name="file" value="<%=bb.getFile()%>">
+									<a href="file_down.jsp?bno=<%=bno%>&file_name=<%=bb.getFile()%>"><%=bb.getFile() %> </a></td>
 								</tr>
 
 						</table>
@@ -77,7 +79,7 @@
 						<div class="btn_set_r">
 		
 							<button type="button" class="write_btn" onclick="location.href='reWriteForm.jsp?bno=<%=bb.getBno()%>&re_ref=<%=bb.getRe_ref()%>&re_lev=<%=bb.getRe_lev()%>&re_seq=<%=bb.getRe_seq()%>'">답글</button>
-							<button type="button" class="list_btn" onclick="location.href='modify.jsp?bno=<%=bb.getBno()%>&pageNum=<%=pageNum%>&file=<%=bb.getFile()%>'">수정</button>
+							<button type="button" class="list_btn" onclick="location.href='modify.jsp?bno=<%=bb.getBno()%>&pageNum=<%=pageNum%>'">수정</button>
 							<button type="button" class="list_btn" onclick="location.href='delete.jsp?bno=<%=bb.getBno()%>&pageNum=<%=pageNum%>'">삭제</button>
 						</div>
 						<div class="clear"></div>
