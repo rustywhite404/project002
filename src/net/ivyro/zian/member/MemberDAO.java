@@ -8,6 +8,9 @@ import java.sql.SQLException;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 public class MemberDAO {
 
@@ -324,4 +327,19 @@ public class MemberDAO {
 		
 		return check;
 	}//deleteMember(id, passwd) : 회원 탈퇴
+	
+	// 회원가입 정규식 처리
+	public static boolean validationPasswd(String passwd){
+	    Pattern p = Pattern.compile("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,}$");
+	    Matcher m = p.matcher(passwd);
+
+	    if(m.matches()){
+	        return true;
+	    }
+	    return false;
+	}
+	
+	////////////////////////////////////
+	
+	
 }

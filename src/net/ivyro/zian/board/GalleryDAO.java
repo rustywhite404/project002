@@ -130,6 +130,33 @@ public class GalleryDAO {
 			
 			//getBoardCount(): 게시판 글 갯수를 리턴
 			
+			//getBoardCount(category): 카테고리별 게시판 글 갯수를 리턴
+			public int getBoardCount(String category){
+				int count = 0;
+				try {
+					con = getCon();
+					// 디비연결
+					
+					sql = "select count(*) from hotel_gallery where category=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, category);
+					rs = pstmt.executeQuery();
+					
+					if(rs.next()){
+						count = rs.getInt(1);
+					}
+					System.out.println("게시판 글 갯수 확인"+count);
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+					System.out.println("갯수 확인 중 예외 발생!");
+				}finally{
+					closeDB();
+				}			
+				
+				return count;			
+			}//getBoardCount(): 카테고리별 게시판 글 갯수를 리턴
+			
 			
 			//getBoardList(startRow, pageSize) : 페이징 처리 된 글 모두 가져오기
 			public ArrayList getBoardList(int startRow, int pageSize){

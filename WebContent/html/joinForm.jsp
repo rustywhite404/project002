@@ -1,3 +1,4 @@
+<%@page import="net.ivyro.zian.member.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -68,7 +69,11 @@
 	<!-- 서브페이지 헤더 -->
 		<jsp:include page="../include/sub.jsp"/>
 	<!-- 본문영역 -->
-		
+		<%
+			// 정규식 처리 하려고 불러와야 하는데 자바로 어떻게 처리해야 하지
+			// MemberDAO mdao = new MemberDAO(); 
+			// mdao.validationPasswd(passwd); 
+		%>
 		<section id="Content_container">
 			<div class="contentBox">
 				<h5>회원가입</h5>		
@@ -79,14 +84,14 @@
 			<div class="fullBox_grey">
 				<div class="boxArea">
 					<div id="joinForm">
-						<form action="joinPro.jsp" method="post" name="join">
+						<form action="joinPro.jsp" method="post" name="join" onsubmit="return check();">
 							<h5>필수 입력정보</h5>
 							<span class="">아이디 </span>
 							<input type="text" name="id"> <button type="button" name="check" onclick="winopen()">중복체크</button>
 							<span class="">비밀번호 </span>
-							<input type="passward" name="passwd" placeholder="영문(대,소문자), 숫자 포함8~12자리">
+							<input type="password" name="passwd" placeholder="영문(대,소문자), 숫자 포함8~12자리">
 							<span class="">비밀번호 확인 </span>
-							<input type="passward"" name="passwdCheck">
+							<input type="password"" name="passwdCheck">
 							<span class="">이름 </span>
 							<input type="text" name="name">
 							<span class="">나이 </span>
@@ -108,7 +113,7 @@
 							<input type="text" id="jibunAddress" placeholder="지번주소">
 							<span id="guide" style="color:#999;display:none"></span>
 							<input type="text" id="detailAddress" placeholder="상세주소">
-							<button type="submit" class="submit_b1">회원가입</button><button type="reset" class="submit_b2">취소</button>
+							<button type="submit" class="submit_b1" onclick="check()">회원가입</button><button type="reset" class="submit_b2">취소</button>
 						</form>
 					</div>
 				</div>
@@ -119,6 +124,7 @@
 	<!-- 푸터영역 -->
 		<jsp:include page="../include/footer.jsp"/>
 	<!-- 푸터영역 -->
+	
 	<script type="text/javascript">
 		/* 사용자가 회원가입 시 */
 		// 데이터 빈공백 체크
@@ -138,6 +144,61 @@
 			}
 			
 		}
+	
+		 function check(){ // 회원가입 조건 체크 
+			   var id = document.join.id.value;
+			   var pw = document.join.passwd.value;
+			   var pw2 = document.join.passwdCheck.value;
+			   var name = document.join.name.value;
+			   var age = document.join.age.value;
+			   var mobile = document.join.mobile.value;
+			   
+			   
+			   if(document.join.id.value == ""){
+				   alert(" 아이디를 입력하시오. ");
+				   document.join.id.focus();
+				   return false;	   
+			   }
+			   
+			   if( !(4<=id.length && id.length<=10) ){
+				   alert("아이디는 4~10자리로 작성바랍니다.");
+				   document.join.id.focus();
+				   return false;
+			   }
+			   
+			   if(pw == ""){
+				   alert(" 비밀번호를 입력하시오. ");
+				   document.join.passwd.focus();
+				   return false;	   
+			   }
+			   if(pw2 == ""){
+				   alert(" 비밀번호 확인창을 입력하시오. ");
+				   document.join.passwdCheck.focus();
+				   return false;	   
+			   }
+			   
+			   if(pw != pw2){
+				   alert(" 입력하신 비밀번호가 다릅니다." );
+				   document.join.passwdCheck.select();
+				   return false;		   
+			   }
+			   
+			   if(name == ""){
+				   alert(" 이름을 입력하시오. ");
+				   document.join.name.focus();
+				   return false;
+			   }
+			   if(name == ""){
+				   alert(" 나이를 입력하시오. ");
+				   document.join.age.focus();
+				   return false;
+			   }
+			   if(name == ""){
+				   alert(" 핸드폰 번호를 입력하시오. ");
+				   document.join.mobile.focus();
+				   return false;
+			   }
+		 }
 	
 	</script>
 	
