@@ -39,10 +39,14 @@
 	
 	// 2. 디비 테이블에 글이 있는지 없는지 판단(getBoardCount() 생성) 
 	
-	int cnt = gdao.getBoardCount();
-	
-	System.out.println("테이블에 저장된 글 수:" + cnt);
-	
+	int cnt = 0;
+	if(category==null){
+		cnt = gdao.getBoardCount();
+		System.out.println("테이블에 저장된 글 수:" + cnt);
+	}else{
+		cnt = gdao.getBoardCount(category);
+		System.out.println("테이블에 저장된 글 수:" + cnt);
+	}
 	
 	
 	// 페이징처리************************************** 
@@ -90,9 +94,11 @@
 		// 카테고리 관리
 		if(category!=null){
 			boardList = gdao.getBoardList(startRow, pageSize, category);
+			System.out.println(boardList);
 		}
 		if(category==null){
 			boardList = gdao.getBoardList(startRow, pageSize);
+			System.out.println(boardList);
 		}
 		// ㄴ페이징 처리 한 리스트 호출(시작행, 페이지 크기) 
 		// bdao에서 getBoardList(startRow, pageSize) 만들어야 쓸 수 있겠지
@@ -237,16 +243,32 @@
 						// 이전이 생기려면 페이지 블럭이 하나 더 있어서 
 						// 내가 뒷 블럭에서 보고 있어야 이전 블럭으로 갈 수 있겠지?
 						if(startPage>pageBlock){
-							%>
-								<a href="eventList.jsp?pageNum=<%=startPage-pageBlock%>">◀ </a>
-							<%
+							if(category!=null){
+							%>	
+								<a href="eventList.jsp?pageNum=<%=startPage-pageBlock%>&category=<%=category%>">◀ </a>
+							<% 
+							}else{
+								%>
+									<a href="eventList.jsp?pageNum=<%=startPage-pageBlock%>">◀ </a>
+								<%
+								}
+							
 						}
 						
 						// 숫자(1...10/11...20/21...30)
 						for(int i=startPage;i<=endPage;i++){
-								%>
-								<a href="eventList.jsp?pageNum=<%=i%>">
+															
+								if(category!=null){
+								%>	
+									<a href="eventList.jsp?pageNum=<%=i%>&category=<%=category%>">
 								<% 
+								}else{
+									%>
+			
+									<a href="eventList.jsp?pageNum=<%=i%>">
+								<%
+								}
+								
 								if(i==Integer.parseInt(pageNum)){
 								%>
 									<font color="#990000"><%= i %></font>
@@ -262,9 +284,16 @@
 						}
 						// 다음(next)
 						if(endPage<pageCount){
-							%>
-							<a href="eventList.jsp?pageNum=<%=startPage+pageBlock%>"> ▶</a>
-							<%
+							
+							if(category!=null){
+								%>	
+									<a href="eventList.jsp?pageNum=<%=startPage+pageBlock%>&category=<%=category%>"> ▶</a>
+								<% 
+								}else{
+									%>
+									<a href="eventList.jsp?pageNum=<%=startPage+pageBlock%>"> ▶</a>
+								<%
+							}
 						}
 					}
 				

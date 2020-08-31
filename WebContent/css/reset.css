@@ -2,7 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&family=Roboto:ital,wght@0,300;1,300&display=swap');
 
 
-/* HTML Default */
+/* Start http://www.cursors-4u.com */ 
+* {cursor: url(https://cur.cursors-4u.net/cursors/cur-11/cur1054.cur), auto !important;} 
+/* End http://www.cursors-4u.com */
 
 * {margin:0; padding:0; border:0 none transparent; box-sizing:border-box;}
 :before, :after {box-sizing:border-box;}
