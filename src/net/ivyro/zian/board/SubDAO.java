@@ -58,6 +58,10 @@ public class SubDAO {
 			subject = "회원가입";
 			break;
 			
+			case "/project002/html/mailForm.jsp":
+			subject = "고객의 소리";
+			break;
+			
 			case "/project002/html/joinComplete.jsp":
 			subject = "회원가입 완료";
 			break;
@@ -110,6 +114,10 @@ public class SubDAO {
 		context = "Member / Join";
 		break;
 		
+		case "/project002/html/mailForm.jsp":
+		context = "Customer / Voice of Customer";
+		break;
+			
 		case "/project002/html/joinComplete.jsp":
 		context = "Member / Join Complete";
 		break;

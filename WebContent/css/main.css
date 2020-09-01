@@ -1,9 +1,9 @@
 @CHARSET "UTF-8";
 
-
 .bg_video{width: 96%; background:#fff; height:850px; overflow: hidden; margin:0px auto; position: relative; z-index:0; }
+.black{position:absolute; width:100%; height:850px; z-index:10; background-color:black; opacity:0.3;}
 video { width: 100%; background:#fff;}
-.jb-text { position: absolute; top: 40%; width: 100%; }
+.jb-text { position: absolute; top: 40%; width: 100%; z-index:150;}
 .jb-text p { margin-top: -24px; text-align: center; font-size: 60px; color: #ffffff; font-family: 'Playfair Display', serif; letter-spacing:3px; line-height: 130%;}
 .jb-text p:after{content:""; position:absolute; width:150px; height:1px; background:#fff; top:150px; left:0; right:0; margin:0 auto;}
 .jb-text span{position:absolute; top:70px; text-align: center; margin:0 auto; color:#fff; font-size:20px; position:absolute; top:185px; left:50%; margin-left:-147px;}
@@ -18,10 +18,10 @@ video { width: 100%; background:#fff;}
 #reservationBar select{width:100px; border-bottom:1px solid #9c836a; font-size:18px; font-weight:700;}
 #reservationBar span{margin:0 5px 0 10px; color:#9c836a;}
 
-#introduce {width:96%; margin:50px auto 50px auto; padding:80px 150px; text-align:center; background-color:#f8f6f6;}
-#introduce .title h2{letter-spacing:1px; color:#444; margin-bottom:25px; text-align:center; position: relative; font-size:32px; font-family: 'Playfair Display', serif;}
-#introduce .title h2::after{content:""; width:150px; height:1px; background: #444; position: absolute; top:30px; left:50%; margin-left:-75px;}
-#introduce .content{margin-top:40px;}
+#introduce {width:96%; margin:50px auto 0px auto; padding:80px 150px; text-align:center; background-color:#f8f6f6;}
+#introduce .title h2{letter-spacing:1px; color:#444; margin-bottom:25px; text-align:center; position: relative; font-size:32px;}
+#introduce .title h2::after{content:""; width:150px; height:1px; background: #444; position: absolute; top:40px; left:50%; margin-left:-75px;}
+#introduce .content{margin-top:42px;}
 #introduce .content p{columns:2; column-width:300px; column-gap:50px; text-align:justify; font-size:16px; line-height:160%; font-weight:300;} 
 
 #information{width:100%; height:550px; padding-top:100px; margin-bottom:100px; background-image: url("../img/sub/sub_bg4.jpg"); background-attachment:fixed; background-size:cover;}
@@ -32,10 +32,125 @@ video { width: 100%; background:#fff;}
 .infoSection input{width:170px; height:48px; margin:30px 5px 0 0; font-size:15px; color:#9c836a; border:1px solid #9c836a; background-color:rgba(255,255,255,0); transition:1s;}
 .infoSection input:hover{background-color:#9c836a; color:#fff;}
 .infoContainer{margin:0 auto; width:1100px;}
-
 .infoContainer2{margin:0 auto; width:1100px; float:right;}
 
+/* Membership */
+#membership{padding:120px 0 60px 0; overflow:hidden; position:relative; display:flex;}
+#membership >div:first-child{width:1200px; margin:0 auto;}
+#membership .membership_title{position:relative; margin:20px 0 0 100px;}
+#membership .membership_title h2{font-size:44px; color:#333; line-height:120%; font-weight:900; margin-bottom:40px;}
+#membership .membership_title p{font-size:16px; line-height: 160%; font-weight:400;}
 
+#membership .membership_messageBox{width:490px; margin:85px 0 85px 30px; padding:70px 65px 60px 70px; border:1px solid #cfcecd;}
+#membership .membership_messageBox h4{color:#444; font-size:24px; margin-bottom:16px; font-weight: 700;}
+#membership .membership_messageBox .membership_btn{height:40px; background:#bababa; border:1px solid #bababa; padding:0 20px; color:#fff; margin:35px 0 15px 0;}
+#membership .membership_messageBox span.tip{display:block; color:#bbb;}
+#membership .membership_pic_back{width:960px; height:530px; background:#615c58; position:absolute; top:120px; left:50%; margin-left:-50px; }
+button.membership_btn2 {height:40px; background:#333; padding:0 20px; color:#fff; margin:35px 0 15px 0;}
+.back_text_box{width:400px; position:absolute; bottom:40px; left:60px;}
+
+.whyyy{font-size:24px; color:#fff; margin-bottom:16px; font-weight:700; }
+#membership .membership_pic_back p{font-size:14px; color:#fff; line-height:160%;}
+#membership .membership_pic{width:610px; height:500px; overflow:hidden; position:absolute; top:190px; right:0; }
+#membership .membership_pic img{height:100%;}
+
+/* 버튼 액션 */
+.actionBtn5 {
+	 overflow:hidden;
+	 position:relative;
+	 display:block;
+	 width:168px;
+	 height:42px;
+	 margin:20px 0;
+	 border:1px solid #fff;
+	 text-align:center;
+	 box-sizing:border-box;
+	 -webkit-box-sizing:border-box;
+	 -moz-box-sizing:border-box;
+	 line-height:42px;
+	 color:#fff;
+	 font-size:14px;
+	 font-family:oswald;
+	 text-decoration:none;
+	 text-transform:uppercase;
+	 cursor:pointer;
+}
+.actionBtn5 span {
+	 display:block;
+}
+.actionBtn5 .hover:after {
+	 position:absolute;
+	 top:0;
+	 left:50%;
+	 opacity:0;
+	display:block;
+	 content:"";
+	 width:0%;
+	 height:42px;
+	 background-color:#fff;
+	 border:1px solid transparent;
+	transform:skewX(-40deg);
+	-webkit-transform:skewX(-40deg);
+	-moz-transform:skewX(-40deg);
+	transform-origin:center center;
+	 -webkit-transform-origin:center center;
+	 -ms-transform-origin:center center;
+	 -moz-transform-origin:center center;
+	 transition:all .35s, opacity .4s;
+	 -webkit-transition:all .35s, opacity .4s;
+	 -moz-transition:all .35s, opacity .4s;
+}
+.actionBtn5 .hover .txt {
+	z-index:10;
+	position:relative;
+	 color:#fff;
+	transition:color .35s;
+	-webkit-transition:color .35s;
+	-moz-transition:color .35s;
+}
+.actionBtn5:hover .hover .txt {
+	 color:#4c4c4d;
+}
+.actionBtn5 .hover:hover:after {
+	 opacity:1;
+	 left:3%;
+	 width:95%;
+	 transform:skewX(-40deg);
+	 -webkit-transform:skewX(-40deg);
+	 -moz-transform:skewX(-40deg);
+}
+
+.actionBtn4 {
+	 position:relative;
+	 display:block;
+	 width:168px;
+	 height:42px;
+	 margin:15px 0;
+	 background-color:#e8e8e8;
+	 line-height:42px;
+	 color:#333;
+	 font-family:oswald;
+	 text-transform:uppercase;
+	 text-align:center;
+	 text-decoration:none;
+	  }
+.actionBtn4:after {
+	 position:absolute;
+	 top:0;
+	 display:block;
+	 content:"";
+	 width:100%;
+	 height:3px;
+	 background-color:#444;
+	 transform:scale3d(0,1,1);
+	 transform-origin:left;
+	 transition:transform .5s;
+}
+.actionBtn4:hover:after {
+	 transform:scale3d(1,1,1);
+}
+
+/* 버튼 액션 */ 
 .fade p{
     animation: fadein 3s;
     -moz-animation: fadein 3s; /* Firefox */

@@ -8,6 +8,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="../css/reset.css" rel="stylesheet" type="text/css">
 <link href="../css/main.css" rel="stylesheet" type="text/css">
+<link href="../css/demo.css" rel="stylesheet" type="text/css">
+<script src="../js/ScrollTrigger.min.js"></script>
 <title>Hotel | Personal Project</title>
 </head>
 <body>
@@ -17,13 +19,16 @@
 
 	<!-- 본문영역 -->
 		<div class="bg_video">
-			<video preload="metadata" autoplay loop muted>
-				<source src="https://www.hameaualbert.fr/sites/default/files/video-thumbnails/2019-04/video_1.mp4">
-			</video>
+			
+			
 			<div class="fade jb-text">
 		    	<p>Personal Project<br>Hotel</p>
 		    	<span>개인 프로젝트 1 : 호텔 홈페이지 구현</span>
 		 	 </div>
+		 	 <div class="black"></div>
+		 	 <video preload="metadata" autoplay loop muted>
+				<source src="https://www.hameaualbert.fr/sites/default/files/video-thumbnails/2019-04/video_1.mp4">
+			</video>
 		</div>
 		<div id="reserv">
 			<div id="reservationBar">
@@ -56,7 +61,7 @@
 		</div>
 		<div id="introduce">
 			<div class="title">
-				<h2>Hotel Introduce</h2>			
+				<h2>INTRODUCE</h2>			
 				<p>Personal Project Hotel, Create by Eun Ju Park</p>
 			</div>
 			<div class="content">
@@ -65,9 +70,49 @@
 				'기존의 호텔 공식 홈페이지와 동일한 형태를 구현해보는 것'을 목적으로 하여, 홈페이지의 일부 레이아웃 및 디자인은 실제 홈페이지의 디자인을 반영해왔으며
 				레퍼런스로 사용된 사이트들은 링크 형태로 첨부합니다. 
 				현재까지 구현된 기능 중 회원 관련으로는 회원가입, 회원정보 조회 및 수정, 회원 탈퇴가 있습니다. 게시판은 일반 글 게시판, 파일 업로드 및 다운로드 게시판, 갤러리 게시판의 CRUD기능을 구현하였습니다.
-				사용한 API는 다음 카카오 우편번호 API와 네이버 에디터 API입니다. 추후 예약 정보에 따른 결제 모듈까지 붙이는 것을 목표로 배움을 이어나가고 있습니다.</p>	
+				사용한 API는 다음 카카오 우편번호 API와 네이버 에디터 API, 네이버 메일과 자바 메일 라이브러리를 활용한 메일 전송 API 입니다. 추후 예약 정보에 따른 결제 모듈까지 붙이는 것을 목표로 배움을 이어나가고 있습니다.</p>	
 			</div>
 		</div>
+		
+		<div id="membership">
+			<div>
+				<div class="membership_title">
+					<h2>WALKERHILL<br>MEMBERSHIP</h1>
+					<p>지금 워커힐 호탤앤리조트의<br>
+					회원이 되시고, 차별화 된 가치와 혜택을<br>
+					누려보세요.</p>
+				</div>
+				<div class="membership_messageBox">
+					<h4>워커힐 프레스티지 클럽</h4>
+					<p>특별한 당신의 품격있는 라이프를 위해<br>
+					워커힐의 프리미엄 서비스를 담았습니다. </p>
+					<a class="actionBtn4">
+						 <span class="hover"></span>
+						 <span>바로가기</span>
+					</a>
+					<span class="tip">워커힐 프레스티지 클럽은 유료 멤버십으로 운영됩니다.</span>
+				</div>
+				<div class="membership_pic_back">
+					<div class="back_text_box">
+						<h3 class="whyyy">워커힐 리워즈</h3>
+						<p>편리한 가입! 사용할수록 커지는 혜택!<br>
+						손쉽게 워커힐 포인트를 적입하고<br>현금처럼 사용해보세요.</p>
+						<a href="mailForm.jsp" class="actionBtn5">
+						 <span class="hover">		
+						 <span class="txt">바로가기</span>
+						</span>
+						</a>
+					</div>
+				</div>
+					<div class="block">
+						<div class="membership_pic" data-scroll="toggle(.fromBottomIn, .fromBottomOut)">
+							<img src="../img/membership.jpg" class="actionImg3" />
+						</div>
+					</div>
+			</div>
+		</div>
+
+		
 		
 	<div id="information">
 		<div class="infoContainer">
@@ -105,5 +150,21 @@
 	<!-- 푸터영역 -->
 		<jsp:include page="../include/footer.jsp"/>
 	<!-- 푸터영역 -->
+
+<script>
+window.counter = function() {
+	// this refers to the html element with the data-scroll-showCallback tag
+	var span = this.querySelector('span');
+	var current = parseInt(span.textContent);
+
+	span.textContent = current + 1;
+};
+
+document.addEventListener('DOMContentLoaded', function(){
+  var trigger = new ScrollTrigger({
+	  addHeight: true
+  });
+});
+</script>
 </body>
 </html>
