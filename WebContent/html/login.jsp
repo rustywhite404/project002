@@ -1,4 +1,3 @@
-<%@page import="net.ivyro.zian.mail.MailDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -18,12 +17,7 @@
 	<!-- 서브페이지 헤더 -->
 		<jsp:include page="../include/sub.jsp"/>
 	<!-- 본문영역 -->
-	
-	<%
-		MailDAO maildao = new MailDAO();
-		maildao.naverMailSend();
-	%>
-		
+			
 		<section id="Content_container">
 			<div class="contentBox">
 				<h5>로그인</h5>		

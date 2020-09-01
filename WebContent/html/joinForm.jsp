@@ -70,9 +70,11 @@
 		<jsp:include page="../include/sub.jsp"/>
 	<!-- 본문영역 -->
 		<%
-			// 정규식 처리 하려고 불러와야 하는데 자바로 어떻게 처리해야 하지
+			// 정규식 처리 하려고 불러와야 하는데 자바로 어떻게 처리해야 하지..ㅠ...ㅠㅠ
 			// MemberDAO mdao = new MemberDAO(); 
 			// mdao.validationPasswd(passwd); 
+			// 이 페이지에서 처리하려면 ajax 써야하고,
+			// 아니면 pro 페이지로 넘겼다가 다시 불러와야 함 
 		%>
 		<section id="Content_container">
 			<div class="contentBox">
@@ -84,36 +86,36 @@
 			<div class="fullBox_grey">
 				<div class="boxArea">
 					<div id="joinForm">
-						<form action="joinPro.jsp" method="post" name="join" onsubmit="return check();">
+						<form action="joinPro.jsp" method="post" name="join" onsubmit="return checkInfo();">
 							<h5>필수 입력정보</h5>
 							<span class="">아이디 </span>
-							<input type="text" name="id"> <button type="button" name="check" onclick="winopen()">중복체크</button>
+							<input type="text" name="id" value=""> <button type="button" name="check" onclick="winopen()">중복체크</button>
 							<span class="">비밀번호 </span>
-							<input type="password" name="passwd" placeholder="영문(대,소문자), 숫자 포함8~12자리">
+							<input type="password" name="passwd" value="" placeholder="영문(대,소문자), 숫자 포함8~12자리">
 							<span class="">비밀번호 확인 </span>
-							<input type="password"" name="passwdCheck">
+							<input type="password"" name="passwdCheck" value="">
 							<span class="">이름 </span>
-							<input type="text" name="name">
+							<input type="text" name="name" value="">
 							<span class="">나이 </span>
-							<input type="number" name="age">
+							<input type="number" name="age" value="">
 							<span class="">핸드폰 번호 </span>
-							<input type="call" name="tel" placeholder="-없이 숫자만 입력해주세요.">
+							<input type="call" name="mobile" value="" placeholder="-없이 숫자만 입력해주세요.">
 							<hr>
 							<h5>선택 입력정보</h5>
 							<span class="">성별 </span>
 							남 <input type="radio" name="gender" value="man" class="gendertype"> 여 <input type="radio" name="gender" value="woman" class="gendertype">
 							<span class="">이메일 </span>
-							<input type="email" name="email">
+							<input type="email" name="email" value="">
 							<span class="">생년월일 </span>
-							<input type="date" name="birth">
+							<input type="date" name="birth" value="">
 							<span class="">주소 </span>
-							<input type="text" id="postcode" name="post" placeholder="우편번호">
+							<input type="text" id="postcode" name="post" placeholder="우편번호" value="">
 							<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
 							<input type="text" id="roadAddress" name="addr" placeholder="도로명주소">
 							<input type="text" id="jibunAddress" placeholder="지번주소">
 							<span id="guide" style="color:#999;display:none"></span>
 							<input type="text" id="detailAddress" placeholder="상세주소">
-							<button type="submit" class="submit_b1" onclick="check()">회원가입</button><button type="reset" class="submit_b2">취소</button>
+							<input type="submit" class="submit_b1" value="회원가입"><button type="reset" class="submit_b2">취소</button>
 						</form>
 					</div>
 				</div>
@@ -126,6 +128,62 @@
 	<!-- 푸터영역 -->
 	
 	<script type="text/javascript">
+	
+	function checkInfo(){ // 회원가입 조건 체크 
+		var id = document.join.id.value;
+		var passwd = document.join.passwd.value;
+		var passwdCheck = document.join.passwdCheck.value;
+		var name = document.join.name.value;
+		var age = document.join.age.value;
+		var mobile = document.join.mobile.value;
+		
+		   if(id == ""){
+			   alert(" 아이디를 입력하시오. ");
+			   document.join.id.focus();
+			   return false;	   
+		   }
+		   
+		   if( !(4<=id.length && id.length<11) ){
+			   alert("아이디는 4~10자리로 작성바랍니다.");
+			   document.join.id.focus();
+			   return false;
+		   }
+		   
+		   if(passwd == ""){
+			   alert(" 비밀번호를 입력하시오. ");
+			   document.join.passwd.focus();
+			   return false;	   
+		   }
+		   if(passwdCheck == ""){
+			   alert(" 비밀번호 확인창을 입력하시오. ");
+			   document.join.passwdCheck.focus();
+			   return false;	   
+		   }
+		   
+		   if(passwd != passwdCheck){
+			   alert(" 입력하신 비밀번호가 다릅니다." );
+			   document.join.passwdCheck.select();
+			   return false;		   
+		   }
+		   
+		   if(name == ""){
+			   alert(" 이름을 입력하시오. ");
+			   document.join.name.focus();
+			   return false;
+		   }
+		   if(age == ""){
+			   alert(" 나이를 입력하시오. ");
+			   document.join.age.focus();
+			   return false;
+		   }
+		   if(mobile == ""){
+			   alert(" 핸드폰 번호를 입력하시오. ");
+			   document.join.mobile.focus();
+			   return false;
+		   }
+	 }
+	 
+	 
 		/* 사용자가 회원가입 시 */
 		// 데이터 빈공백 체크
 		function winopen() {
@@ -145,60 +203,7 @@
 			
 		}
 	
-		 function check(){ // 회원가입 조건 체크 
-			   var id = document.join.id.value;
-			   var pw = document.join.passwd.value;
-			   var pw2 = document.join.passwdCheck.value;
-			   var name = document.join.name.value;
-			   var age = document.join.age.value;
-			   var mobile = document.join.mobile.value;
-			   
-			   
-			   if(document.join.id.value == ""){
-				   alert(" 아이디를 입력하시오. ");
-				   document.join.id.focus();
-				   return false;	   
-			   }
-			   
-			   if( !(4<=id.length && id.length<=10) ){
-				   alert("아이디는 4~10자리로 작성바랍니다.");
-				   document.join.id.focus();
-				   return false;
-			   }
-			   
-			   if(pw == ""){
-				   alert(" 비밀번호를 입력하시오. ");
-				   document.join.passwd.focus();
-				   return false;	   
-			   }
-			   if(pw2 == ""){
-				   alert(" 비밀번호 확인창을 입력하시오. ");
-				   document.join.passwdCheck.focus();
-				   return false;	   
-			   }
-			   
-			   if(pw != pw2){
-				   alert(" 입력하신 비밀번호가 다릅니다." );
-				   document.join.passwdCheck.select();
-				   return false;		   
-			   }
-			   
-			   if(name == ""){
-				   alert(" 이름을 입력하시오. ");
-				   document.join.name.focus();
-				   return false;
-			   }
-			   if(name == ""){
-				   alert(" 나이를 입력하시오. ");
-				   document.join.age.focus();
-				   return false;
-			   }
-			   if(name == ""){
-				   alert(" 핸드폰 번호를 입력하시오. ");
-				   document.join.mobile.focus();
-				   return false;
-			   }
-		 }
+		
 	
 	</script>
 	
