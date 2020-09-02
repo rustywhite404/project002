@@ -10,22 +10,15 @@
 <body>
 
 <%
-
-request.setCharacterEncoding("UTF-8");
-String name = request.getParameter("name");
-String email = request.getParameter("email");
-String subject = request.getParameter("subject");
-String content = request.getParameter("content");
-
-MailDAO mailsend = new MailDAO();
-mailsend.sendMail(name, email, subject, content);
+	
+ MailDAO mailsend = new MailDAO();
+ mailsend.sendMail();
 
 %>
 
-
-
 <script>
-location.href="mailSend.jsp";
+	alert("메일 발송!");
+
 </script>
 </body>
 </html>

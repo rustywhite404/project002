@@ -70,13 +70,20 @@
 .userCheckBox button:hover{color:#fff; background:#9c836a; border:1px solid #9c836a;}
 
 /* mailForm.jsp */
-#mailForm{width:1200px; margin:0 auto;}
-#mailForm input{width:100%; height:48px; border:1px solid #e6e3df; padding:0 12px; font-size:14px; font-weight:300; margin:10px 0; transition:all .3s ease; }
+#mailForm{width:100%; margin:0 auto;}
+#mailForm input{width:100%; height:48px; border:1px solid #e6e3df; padding:0 12px; font-size:14px; font-weight:300; margin:0 0 20px 0; }
 #mailForm .userInfo{width:33.33%; float:left;}
-#mailForm .userContent{width:33.33%; float:left;}
-#mailForm .userAgree{width:33.33%; float:left;}
+#mailForm .userContent{width:33.33%; float:left; padding:0 15px;}
+#mailForm .userContent .innerBox{position:relative; height:665px; border:1px solid #e6e3df;}
+#mailForm .userContent h4{font-size:20px; color: #9c836a; font-weight:500; padding:20px;}
+#mailForm .userContent .main_copy{padding:0 20px; text-align:justify; line-height:180%;}
+#mailForm .userContent .bottom_copy{position:absolute; bottom:30px; right:30px; text-align:right; font-size:32px; color:#444; font-weight:900; line-height:110%;}
+#mailForm .userAgree{width:33.33%; float:right;}
 #mailForm .userAgree img{width:100%;}
-#mailForm textarea{border:1px solid #e6e3df;}
+#mailForm textarea{border:1px solid #e6e3df; resize:none;}
+#mailForm button{width:100%; height:56px; margin-top:10px; padding:0 32px; font-size:18px; color:#9c836a; border:1px solid #9c836a; transition:1s;}
+#mailForm button:hover{color:#fff; background:#9c836a; border:1px solid #9c836a;}
+
 
 /* joinCheck.jsp */
 #joinCheck {padding:15px;}

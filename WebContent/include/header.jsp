@@ -71,7 +71,7 @@
 						<li><a href="../file/boardList.jsp">Download</a></li>
 					</ul>
 				</li>
-				<li><a href="mailForm.jsp">Customer</a></li>
+				<li><a href="../html/mailForm.jsp">Customer</a></li>
 			</ul>
 		</nav>
 		<div class="clear"></div>

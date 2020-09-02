@@ -94,9 +94,9 @@
 				</div>
 				<div class="membership_pic_back">
 					<div class="back_text_box">
-						<h3 class="whyyy">워커힐 리워즈</h3>
-						<p>편리한 가입! 사용할수록 커지는 혜택!<br>
-						손쉽게 워커힐 포인트를 적입하고<br>현금처럼 사용해보세요.</p>
+						<h3 class="whyyy">고객의 소리</h3>
+						<p>단 한 사람의 의견도 소중하게.<br>
+						당신과 워커힐이 함께 만들어가는<br>더 나은 내일을 기원합니다.</p>
 						<a href="mailForm.jsp" class="actionBtn5">
 						 <span class="hover">		
 						 <span class="txt">바로가기</span>
