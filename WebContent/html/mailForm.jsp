@@ -18,13 +18,6 @@
 	<!-- 서브페이지 헤더 -->
 		<jsp:include page="../include/sub.jsp"/>
 	<!-- 본문영역 -->
-		<%
-			// 정규식 처리 하려고 불러와야 하는데 자바로 어떻게 처리해야 하지..ㅠ...ㅠㅠ
-			// MemberDAO mdao = new MemberDAO(); 
-			// mdao.validationPasswd(passwd); 
-			// 이 페이지에서 처리하려면 ajax 써야하고,
-			// 아니면 pro 페이지로 넘겼다가 다시 불러와야 함 
-		%>
 		<section id="Content_container">
 			<div class="contentBox">
 				<h5>고객의 소리</h5>		
@@ -33,16 +26,17 @@
 				</h4>
 			</div>
 			<div id="mailForm">
-				<form action="mailPro.jsp">
+				<form action="mailPro.jsp" method="post">
 					<div class="userInfo">
 						<input type="text" name="name" placeholder="이름"><br>
 						<input type="mail" name="email" placeholder="e-mail"><br>
-						<input type="call" name="mobile" placeholder="-를 빼고 입력해주세요."><br>
+						<input type="call" name="mobile" placeholder="휴대폰 번호"><br>
 					</div>
 					<div class="userContent">
-					<textarea cols="50" rows="20"></textarea>
+					<textarea cols="50" rows="20" name="content"></textarea>
+					<button type="submit">메일 보내기</button>
 					</div>
-					<div class="userAgree">내용내용</div>
+					<div class="userAgree"><img src="../img/customer.jpg" /></div>
 					<div class="clear"></div>
 				</form>
 			</div>
