@@ -43,6 +43,8 @@
 		gb.setCategory(multi.getParameter("category"));
 		gb.setPeriod(multi.getParameter("period"));
 		gb.setContent(multi.getParameter("content"));
+		
+		System.out.println("@@@@@"+multi.getParameter("content"));
 		// 일반적인 데이터는 parameter로 되지만, 파일은 이 형태로 저장이 안됨
 		gb.setThumnail(multi.getFilesystemName("thumnail")); // (o)
 		gb.setPic(multi.getFilesystemName("pic")); // (o)

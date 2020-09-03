@@ -46,6 +46,8 @@ public class GalleryDAO {
 			
 			public void insertBoard(GalleryBean gb){
 				
+				System.out.println(gb);
+				
 				int num = 0; // 글번호 저장
 				
 				try {

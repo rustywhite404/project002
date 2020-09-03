@@ -14,7 +14,7 @@
 	<%
 		
 		Random random = new Random();
-		int r_num = random.nextInt(6)+1;
+		int r_num = random.nextInt(12)+1;
 		System.out.println("이번 숫자:"+r_num);
 		
 		// sub페이지 타이틀, 소타이틀

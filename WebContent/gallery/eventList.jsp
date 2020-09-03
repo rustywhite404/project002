@@ -178,6 +178,7 @@
 											</div>
 										
 										<h5 class="event_subject"><%=gb.getSubject()%></h5>
+										
 										<p class="event_context">
 											<c:set var="TextValue" value="<%=convertText %>"/>								         
 									        <c:choose>		        
@@ -191,6 +192,7 @@
 											</c:choose>
 											
 										</p>
+										
 										<p class="event_period"><%=gb.getPeriod() %></p>
 									</div>
 									</div>
