@@ -180,13 +180,13 @@
 										<h5 class="event_subject"><%=gb.getSubject()%></h5>
 										
 										<p class="event_context">
-											<c:set var="TextValue" value="<%=convertText %>"/>								         
+											<c:set var="TextValue" value="<%=convertText %>" />								         
 									        <c:choose>		        
 									        <c:when test="${fn:length(TextValue) > 60}">			   
 									      	  <c:out value='${fn:substring(TextValue.replaceAll("\\\<.*?\\\>",""),0, 59)}' />...
 									        </c:when>
 									        <c:otherwise>
-									       <c:out value='${TextValue.replaceAll("\\\<.*?\\\>","")}' />
+									       <c:out value='${TextValue.replaceAll("\\\<.*?\\\>","")}' escapeXml="false" />
 									        </c:otherwise>								        
 									        
 											</c:choose>

@@ -189,7 +189,7 @@
 					<% 
 					if(i==Integer.parseInt(pageNum)){
 					%>
-						<font color="#990000"><%= i %></font>
+						<font color="#9c836a"><%= i %></font>
 					<% 
 					}else{
 					%>

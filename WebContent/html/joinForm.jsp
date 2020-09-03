@@ -9,8 +9,10 @@
 <link href="../css/reset.css" rel="stylesheet" type="text/css">
 <link href="../css/main.css" rel="stylesheet" type="text/css">
 <link href="../css/style.css" rel="stylesheet" type="text/css">
+<link href="../css/password.css" rel="stylesheet" type="text/css">
 <title>Hotel | Personal Project</title>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
 <script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
     function execDaumPostcode() {
@@ -86,12 +88,18 @@
 			<div class="fullBox_grey">
 				<div class="boxArea">
 					<div id="joinForm">
-						<form action="joinPro.jsp" method="post" name="join" onsubmit="return checkInfo();">
+						<form action="joinPro.jsp" method="post" class="form-1" name="join" onsubmit="return checkInfo();">
 							<h5>필수 입력정보</h5>
 							<span class="">아이디 </span>
 							<input type="text" name="id" value=""> <button type="button" name="check" onclick="winopen()">중복체크</button>
 							<span class="">비밀번호 </span>
-							<input type="password" name="passwd" value="" placeholder="영문(대,소문자), 숫자 포함8~12자리">
+							<input type="password" class="input-1" name="passwd" value="" placeholder="영문(대,소문자), 숫자 포함8~12자리">
+							<div class="progress-bar_wrap">
+						      <div class="progress-bar_item progress-bar_item-1"></div>
+						      <div class="progress-bar_item progress-bar_item-2"></div>
+						      <div class="progress-bar_item progress-bar_item-3"></div>
+						    </div>
+						    <span class="progress-bar_text">비밀번호를 입력해주세요.</span>
 							<span class="">비밀번호 확인 </span>
 							<input type="password"" name="passwdCheck" value="">
 							<span class="">이름 </span>
@@ -150,34 +158,34 @@
 		   }
 		   
 		   if(passwd == ""){
-			   alert(" 비밀번호를 입력하시오. ");
+			   alert(" 비밀번호를 입력해주세요.");
 			   document.join.passwd.focus();
 			   return false;	   
 		   }
 		   if(passwdCheck == ""){
-			   alert(" 비밀번호 확인창을 입력하시오. ");
+			   alert(" 비밀번호를 한번 더 확인해주세요.");
 			   document.join.passwdCheck.focus();
 			   return false;	   
 		   }
 		   
 		   if(passwd != passwdCheck){
-			   alert(" 입력하신 비밀번호가 다릅니다." );
+			   alert(" 입력하신 비밀번호가 일치하지 않습니다." );
 			   document.join.passwdCheck.select();
 			   return false;		   
 		   }
 		   
 		   if(name == ""){
-			   alert(" 이름을 입력하시오. ");
+			   alert(" 이름을 입력해주세요.");
 			   document.join.name.focus();
 			   return false;
 		   }
 		   if(age == ""){
-			   alert(" 나이를 입력하시오. ");
+			   alert(" 나이를 입력해주세요.");
 			   document.join.age.focus();
 			   return false;
 		   }
 		   if(mobile == ""){
-			   alert(" 핸드폰 번호를 입력하시오. ");
+			   alert(" 핸드폰 번호를 입력해주세요. ");
 			   document.join.mobile.focus();
 			   return false;
 		   }
@@ -203,8 +211,46 @@
 			
 		}
 	
-		
-	
+		/* 비밀번호 글자수에 따른 gui */
+	$( document ).ready(function() {
+	  
+	  const changeText = function (el, text, color) {
+	    el.text(text).css('color', color);
+	  };
+	  
+	  $('.input-1').keyup(function(){
+	    let len = this.value.length;
+	    const pbText = $('.form-1 .progress-bar_text');
+
+	    if (len === 0) {
+	      $('.form-1 .progress-bar_item').each(function() {
+	        $(this).removeClass('active')
+	      });
+	      $('.form-1 .active').css('background-color', 'transparent');
+	      changeText(pbText, '비밀번호를 입력해주세요.');
+	    } else if (len > 0 && len <= 4) {
+	      $('.form-1 .progress-bar_item-1').addClass('active');
+	      $('.form-1 .progress-bar_item-2').removeClass('active');
+	      $('.form-1 .progress-bar_item-3').removeClass('active');
+	      $('.form-1 .active').css('background-color', '#FF4B47');
+	      changeText(pbText, '비밀번호는 8글자 이상이 안전합니다.');
+	    } else if (len > 4 && len <= 8) {
+	      $('.form-1 .progress-bar_item-2').addClass('active');
+	      $('.form-1 .progress-bar_item-3').removeClass('active');
+	      $('.form-1 .active').css('background-color', '#F9AE35');
+	      changeText(pbText, '비밀번호는 8글자 이상이 안전합니다.');
+	    } else {
+	      $('.form-1 .progress-bar_item').each(function() {
+	        $(this).addClass('active');
+	      });
+	      $('.form-1 .active').css('background-color', '#2DAF7D');
+	      changeText(pbText, '안전한 비밀번호입니다:D');
+	    } 
+	  });
+	  
+	});
+	  
+
 	</script>
 	
 </body>

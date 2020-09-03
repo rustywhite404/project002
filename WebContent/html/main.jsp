@@ -77,7 +77,7 @@
 		<div id="membership">
 			<div>
 				<div class="membership_title">
-					<h2>WALKERHILL<br>MEMBERSHIP</h1>
+					<h2 class="vista blank">WALKERHILL<br>MEMBERSHIP</h1>
 					<p>지금 워커힐 호탤앤리조트의<br>
 					회원이 되시고, 차별화 된 가치와 혜택을<br>
 					누려보세요.</p>
@@ -117,9 +117,9 @@
 	<div id="information">
 		<div class="infoContainer">
 			<div class="infoSection">
-				<div class="infoContext">
-					<H1>DARAKHYU</H1>
-					<p>여행자의 몸과 마음에 에너지를 채워주는 가장 스마트한 호텔<br>
+				<div class="infoContext psRel">
+					<H1 class="vista blank">DARAKHYU</H1>
+					<p class="line_style">여행자의 몸과 마음에 에너지를 채워주는 가장 스마트한 호텔<br>
 					다락휴에서 색다른 여행을 시작하세요.</p>
 					<input type="button" value="인천공항 제1터미널">
 					<input type="button" value="인천공항 제2터미널">
@@ -132,13 +132,13 @@
 	<div id="information2">
 		<div class="infoContainer2">
 			<div class="infoSection">
-				<div class="infoContext">
-					<H1>DARAKHYU</H1>
-					<p>여행자의 몸과 마음에 에너지를 채워주는 가장 스마트한 호텔<br>
-					다락휴에서 색다른 여행을 시작하세요.</p>
-					<input type="button" value="인천공항 제1터미널">
-					<input type="button" value="인천공항 제2터미널">
-					<input type="button" value="전라남도 여수">
+				<div class="infoContext psRel">
+					<H1 class="vista blank">WORKERHILL<br>VISTA</H1>
+					<p>감각적 인테리어와 최신의 테크놀로지가 선보이는<br>
+					새로운 라이프 스타일 트렌드를 경험하세요.</p>
+					<input type="button" value="더글라스 하우스">
+					<input type="button" value="핑크 골프 클럽">
+					<input type="button" value="제주 포도 호텔">
 				</div>
 			</div>
 		</div>

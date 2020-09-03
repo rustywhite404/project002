@@ -18,11 +18,23 @@ public class SubDAO {
 			subject = "이벤트";
 			break;
 			
+			case "/project002/gallery/eventDelete.jsp":
+			subject = "이벤트";
+			break;
+			
 			case "/project002/gallery/eventWrite.jsp":
 			subject = "이벤트";
 			break;
 			
 			case "/project002/board/boardList.jsp": 
+			subject = "공지사항";
+			break;
+			
+			case "/project002/board/delete.jsp": 
+			subject = "공지사항";
+			break;
+			
+			case "/project002/board/writeForm.jsp": 
 			subject = "공지사항";
 			break;
 			
@@ -47,6 +59,10 @@ public class SubDAO {
 			break;
 			
 			case "/project002/file/content.jsp": 
+			subject = "자료실";
+			break;
+			
+			case "/project002/file/delete.jsp": 
 			subject = "자료실";
 			break;
 			
@@ -105,8 +121,20 @@ public class SubDAO {
 		case "/project002/gallery/eventModify.jsp":
 		context = "Membership / Event";
 		break;
+		
+		case "/project002/gallery/eventDelete.jsp":
+		context = "Membership / Event";
+		break;
 			
 		case "/project002/board/boardList.jsp": 
+		context = "Membership / Notice";
+		break;
+		
+		case "/project002/board/delete.jsp": 
+		context = "Membership / Notice";
+		break;
+			
+		case "/project002/board/writeForm.jsp": 
 		context = "Membership / Notice";
 		break;
 		
@@ -135,6 +163,10 @@ public class SubDAO {
 		break;
 		
 		case "/project002/file/modify.jsp": 
+		context = "Membership / Download";
+		break;
+		
+		case "/project002/file/delete.jsp": 
 		context = "Membership / Download";
 		break;
 		

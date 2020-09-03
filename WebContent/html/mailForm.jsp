@@ -32,7 +32,16 @@
 							<input type="mail" name="email" placeholder="e-mail"><br>
 							<input type="text" name="subject" placeholder="제목"><br>
 							<textarea cols="50.9" rows="18" name="content"></textarea>
-							<button type="submit">메일 보내기</button>
+							<button type="submit" onclick="loading();">메일 보내기</button>
+							<div class="lodingAni">
+							<div id="actionCon">
+								<div class="actionType5_1">
+									<div class="loding1"></div>
+									<div class="loding2"></div>
+									<div class="loding3"></div>
+								</div>
+							</div>
+							</div>
 						</div>
 						<div class="userContent">
 							<div class="innerBox">
@@ -42,11 +51,11 @@
 							PC웹, 모바일 웹/앱 : 이름, 이메일 주소 
 							워커힐 호텔은 이용자의 별도 동의가 있는 경우나 법령에 규정된 경우를 제외하고는 이용자의 개인정보를 제3자에게 제공하지 않습니다.
 							개인정보는 수집 및 이용목적이 달성되면 지체없이 파기하며, 절차 및 방법은 아래와 같습니다.
-전자적 파일 형태인 경우 복구 및 재생되지 않도록 안전하게 삭제하고, 그 밖에 기록물, 인쇄물, 서면 등의 경우 분쇄하거나 소각하여 파기합니다.
-다만, 내부 방침에 따라 일정 기간 보관 후 파기하는 정보는 아래와 같습니다. 
-1)아래 정보는 탈퇴일부터 최대 1년간 보관 후 파기합니다.
-안내메일 발송 및 CS문의 대응을 위해 계정과 탈퇴안내 이메일 주소를 암호화하여 보관
-서비스 부정이용 기록
+							전자적 파일 형태인 경우 복구 및 재생되지 않도록 안전하게 삭제하고, 그 밖에 기록물, 인쇄물, 서면 등의 경우 분쇄하거나 소각하여 파기합니다.
+							다만, 내부 방침에 따라 일정 기간 보관 후 파기하는 정보는 아래와 같습니다. 
+							1)아래 정보는 탈퇴일부터 최대 1년간 보관 후 파기합니다.
+							안내메일 발송 및 CS문의 대응을 위해 계정과 탈퇴안내 이메일 주소를 암호화하여 보관
+							서비스 부정이용 기록
 							</p>
 							<p class="bottom_copy">#<br>VOICE OF<br>CUSTOMER</p>
 							</div>
@@ -65,5 +74,15 @@
 		<jsp:include page="../include/footer.jsp"/>
 	<!-- 푸터영역 -->
 	
+	<script>
+	
+
+		function loading() {
+	    // alert("로딩창 생성");
+	    document.getElementById("actionCon").style.display = "block"; 
+	  }
+		
+		
+	</script>
 </body>
 </html>
