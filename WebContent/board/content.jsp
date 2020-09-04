@@ -18,7 +18,7 @@
 	<!-- 서브페이지 헤더 -->
 		<jsp:include page="../include/sub.jsp"/>
 	<!-- 본문영역 -->
-		<%
+		<%	
 			//한글화
 			request.setCharacterEncoding("UTF-8");
 			// 글번호에 해당하는 글의 정보 가져오고 넘어온 데이터 저장(bno, pageNum)	

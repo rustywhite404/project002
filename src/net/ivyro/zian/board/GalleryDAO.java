@@ -393,57 +393,53 @@ public class GalleryDAO {
 							if(gb.getPic()!=null){// pic이 비어있지 않을 때 
 								
 								if(gb.getThumnail()!=null){ // thumnail도 비어있지 않다면
-									sql = "update hotel_gallery set name=?, subject=?, content=?, period=?, category=?, thumnail=?, pic=? where bno=?";
+									sql = "update hotel_gallery set subject=?, content=?, period=?, category=?, thumnail=?, pic=? where bno=?";
 									pstmt = con.prepareStatement(sql);
-									pstmt.setString(1, gb.getName());
-									pstmt.setString(2, gb.getSubject());
-									pstmt.setString(3, gb.getContent());
-									pstmt.setString(4, gb.getPeriod());
-									pstmt.setString(5, gb.getCategory());
-									pstmt.setString(6, gb.getThumnail());
-									pstmt.setString(7, gb.getPic());
-									pstmt.setInt(8, gb.getBno());
+									pstmt.setString(1, gb.getSubject());
+									pstmt.setString(2, gb.getContent());
+									pstmt.setString(3, gb.getPeriod());
+									pstmt.setString(4, gb.getCategory());
+									pstmt.setString(5, gb.getThumnail());
+									pstmt.setString(6, gb.getPic());
+									pstmt.setInt(7, gb.getBno());
 									pstmt.executeUpdate();
 									check = 1;
 									System.out.println(gb);
 								}else{ // thumnail은 비어있다면 
-									sql = "update hotel_gallery set name=?, subject=?, content=?, period=?, category=?, pic=? where bno=?";
+									sql = "update hotel_gallery set subject=?, content=?, period=?, category=?, pic=? where bno=?";
 									pstmt = con.prepareStatement(sql);
-									pstmt.setString(1, gb.getName());
-									pstmt.setString(2, gb.getSubject());
-									pstmt.setString(3, gb.getContent());
-									pstmt.setString(4, gb.getPeriod());
-									pstmt.setString(5, gb.getCategory());
-									pstmt.setString(6, gb.getPic());
-									pstmt.setInt(7, gb.getBno());
+									pstmt.setString(1, gb.getSubject());
+									pstmt.setString(2, gb.getContent());
+									pstmt.setString(3, gb.getPeriod());
+									pstmt.setString(4, gb.getCategory());
+									pstmt.setString(5, gb.getPic());
+									pstmt.setInt(6, gb.getBno());
 									pstmt.executeUpdate();
 									check = 1;
 									System.out.println(gb);
 								}
 
 							}else if(gb.getPic()==null && gb.getThumnail()!=null){ //pic은 비어있고, thumnail은 비어있지 않다면
-								sql = "update hotel_gallery set name=?, subject=?, content=?, period=?, category=?, thumnail=? where bno=?";
+								sql = "update hotel_gallery set subject=?, content=?, period=?, category=?, thumnail=? where bno=?";
 								pstmt = con.prepareStatement(sql);
-								pstmt.setString(1, gb.getName());
-								pstmt.setString(2, gb.getSubject());
-								pstmt.setString(3, gb.getContent());
-								pstmt.setString(4, gb.getPeriod());
-								pstmt.setString(5, gb.getCategory());
-								pstmt.setString(6, gb.getThumnail());
-								pstmt.setInt(7, gb.getBno());
+								pstmt.setString(1, gb.getSubject());
+								pstmt.setString(2, gb.getContent());
+								pstmt.setString(3, gb.getPeriod());
+								pstmt.setString(4, gb.getCategory());
+								pstmt.setString(5, gb.getThumnail());
+								pstmt.setInt(6, gb.getBno());
 								pstmt.executeUpdate();
 								check = 1;
 								System.out.println(gb);
 							}else{
 								// 둘 다 비어있을 때 
-								sql = "update hotel_gallery set name=?, subject=?, content=?, period=?, category=? where bno=?";
+								sql = "update hotel_gallery set subject=?, content=?, period=?, category=? where bno=?";
 								pstmt = con.prepareStatement(sql);
-								pstmt.setString(1, gb.getName());
-								pstmt.setString(2, gb.getSubject());
-								pstmt.setString(3, gb.getContent());
-								pstmt.setString(4, gb.getPeriod());
-								pstmt.setString(5, gb.getCategory());
-								pstmt.setInt(6, gb.getBno());
+								pstmt.setString(1, gb.getSubject());
+								pstmt.setString(2, gb.getContent());
+								pstmt.setString(3, gb.getPeriod());
+								pstmt.setString(4, gb.getCategory());
+								pstmt.setInt(5, gb.getBno());
 								pstmt.executeUpdate();
 								check = 1;
 								System.out.println(gb);

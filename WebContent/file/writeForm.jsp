@@ -33,7 +33,7 @@
 								<tr>
 									
 									<th>작성자</th>
-									<td><input type="text" name="name"><input type="hidden" name="id"></td>
+									<td><% if(id!=null){%><span><%=id %><input type="hidden" name="name" value="<%=id %>"></span><%}else{ %><input type="text" name="name" value=""><%} %></td>
 									<th>비밀번호</th>
 									<td><input type="password" name="passwd"></td>
 								</tr>

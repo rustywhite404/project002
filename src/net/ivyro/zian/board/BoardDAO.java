@@ -298,23 +298,21 @@ public class BoardDAO {
 					if(bb.getPasswd().equals(rs.getString("passwd"))){
 						
 						if(bb.getFile()!=null){
-							sql = "update hotel_board set name=?, subject=?, content=?, file=? where bno=?";
+							sql = "update hotel_board set subject=?, content=?, file=? where bno=?";
 							pstmt = con.prepareStatement(sql);
-							pstmt.setString(1, bb.getName());
-							pstmt.setString(2, bb.getSubject());
-							pstmt.setString(3, bb.getContent());
-							pstmt.setString(4, bb.getFile());
-							pstmt.setInt(5, bb.getBno());
+							pstmt.setString(1, bb.getSubject());
+							pstmt.setString(2, bb.getContent());
+							pstmt.setString(3, bb.getFile());
+							pstmt.setInt(4, bb.getBno());
 							
 							pstmt.executeUpdate();
 							check = 1;
 						}else{
-							sql = "update hotel_board set name=?, subject=?, content=? where bno=?";
+							sql = "update hotel_board set subject=?, content=? where bno=?";
 							pstmt = con.prepareStatement(sql);
-							pstmt.setString(1, bb.getName());
-							pstmt.setString(2, bb.getSubject());
-							pstmt.setString(3, bb.getContent());
-							pstmt.setInt(4, bb.getBno());
+							pstmt.setString(1, bb.getSubject());
+							pstmt.setString(2, bb.getContent());
+							pstmt.setInt(3, bb.getBno());
 							
 							pstmt.executeUpdate();
 							check = 1;

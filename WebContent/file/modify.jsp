@@ -43,7 +43,7 @@
 								<tr>
 									
 									<th>작성자</th>
-									<td><input type="text" name="name" value="<%=bb.getName()%>"><input type="hidden" name="bno" value="<%=bb.getBno()%>"></td>
+									<td><span><%=bb.getName()%></span><input type="hidden" name="bno" value="<%=bb.getBno()%>"></td>
 									<th>비밀번호</th>
 									<td><input type="password" name="passwd"></td>
 								</tr>

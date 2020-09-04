@@ -42,7 +42,7 @@
 								<tr>
 									
 									<th>작성자<input type="hidden" name="bno" value="<%=bb.getBno()%>"></th>
-									<td><input type="text" name="name" value="<%=bb.getName()%>"></td>
+									<td><span><%=bb.getName()%></span></td>
 									<th>비밀번호</th>
 									<td><input type="password" name="passwd"></td>
 								</tr>

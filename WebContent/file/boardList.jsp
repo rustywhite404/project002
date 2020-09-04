@@ -20,6 +20,10 @@
 		<jsp:include page="../include/sub.jsp"/>
 	<!-- 본문영역 -->
 		<%
+		
+		String id = (String)session.getAttribute("id");
+		System.out.println(id+"boardList페이지가 가져온 id");
+		
 	// 디비에서 전체 글 목록을 읽어서 가져오기
 	
 	// 1. BoardDAO 객체 생성

@@ -189,6 +189,11 @@
 			   document.join.mobile.focus();
 			   return false;
 		   }
+		   if( !(10<=mobile.length && mobile.length<=11) ){
+			   alert("핸드폰 번호는 10~11 자리로 작성바랍니다.");
+			   document.join.mobile.focus();
+			   return false;
+		   }
 	 }
 	 
 	 
@@ -238,7 +243,7 @@
 	      $('.form-1 .progress-bar_item-2').addClass('active');
 	      $('.form-1 .progress-bar_item-3').removeClass('active');
 	      $('.form-1 .active').css('background-color', '#F9AE35');
-	      changeText(pbText, '비밀번호는 8글자 이상이 안전합니다.');
+	      changeText(pbText, '조금만 더 길면 좋을 것 같아요!');
 	    } else {
 	      $('.form-1 .progress-bar_item').each(function() {
 	        $(this).addClass('active');

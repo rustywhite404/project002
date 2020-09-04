@@ -19,6 +19,7 @@
 	<!-- 본문영역 -->
 
 		<%
+		String id = (String)session.getAttribute("id");
 		int bno = Integer.parseInt(request.getParameter("bno"));
 		int re_ref = Integer.parseInt(request.getParameter("re_ref"));
 		int re_lev = Integer.parseInt(request.getParameter("re_lev"));
@@ -41,7 +42,7 @@
 							</colgroup>
 								<tr>
 									<th>작성자</th>
-									<td><input type="text" name="name"></td>
+									<td><% if(id!=null){%><span><%=id %><input type="hidden" name="name" value="<%=id %>"></span><%}else{ %><input type="text" name="name" value=""><%} %></td>
 									<th>비밀번호</th>
 									<td><input type="password" name="passwd"></td>
 								</tr>
